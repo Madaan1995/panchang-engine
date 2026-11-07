@@ -34,7 +34,7 @@ when its acceptance criteria are covered by tests and
 - [x] 5.2 Adhik maas detection — isAdhik when no sankranti; nija month shares name; Metonic 6–8 per 19 y (`feat: detect adhik maas`)
 
 ## 6. Festivals
-- [ ] 6.1 `data/festivals.json` (10 festivals) + observance-window data
+- [x] 6.1 `data/festivals.json` (10 festivals) + observance-window data — 10 festivals (amanta months) + window definitions, zod-validated, provenance empty (`feat: add festival rule data and observance windows`)
 - [ ] 6.2 `festivals(year, location)` + Diwali internal-consistency test
 
 ## 7. Muhurat finder

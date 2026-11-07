@@ -12,6 +12,8 @@
 import { z } from 'zod';
 import choghadiyaJson from '../../data/choghadiya.json';
 import dayTimingsJson from '../../data/day-timings.json';
+import festivalsJson from '../../data/festivals.json';
+import observanceWindowsJson from '../../data/observance-windows.json';
 
 export const provenanceSchema = z.object({
   verifiedBy: z.string(),
@@ -69,6 +71,52 @@ export const choghadiyaSchema = z.object({
 export type ChoghadiyaData = z.infer<typeof choghadiyaSchema>;
 
 export const CHOGHADIYA: ChoghadiyaData = choghadiyaSchema.parse(choghadiyaJson);
+
+export const OBSERVANCE_RULES = ['tithi_at_sunrise', 'tithi_at_midnight', 'tithi_during_pradosh', 'tithi_during_aparahna'] as const;
+export type ObservanceRule = (typeof OBSERVANCE_RULES)[number];
+
+const windowSchema = z.discriminatedUnion('kind', [
+  z.object({ name: nameSchema, kind: z.literal('instant'), at: z.literal('sunrise') }),
+  z.object({ name: nameSchema, kind: z.literal('dayParts'), parts: z.number().int().min(1), part: z.number().int().min(1) }),
+  z.object({ name: nameSchema, kind: z.literal('nightMuhurtas'), from: z.number().int().min(1).max(15), to: z.number().int().min(1).max(15) }),
+]);
+export type ObservanceWindowDef = z.infer<typeof windowSchema>;
+
+export const observanceWindowsSchema = z.object({
+  header: z.string().startsWith('UNVERIFIED'),
+  provenance: provenanceSchema,
+  description: z.string(),
+  windows: z.record(z.enum(OBSERVANCE_RULES), windowSchema),
+});
+
+export const OBSERVANCE_WINDOWS = observanceWindowsSchema.parse(observanceWindowsJson);
+
+export const LUNAR_MONTH_KEYS = [
+  'Chaitra', 'Vaishakha', 'Jyeshtha', 'Ashadha', 'Shravana', 'Bhadrapada',
+  'Ashvin', 'Kartika', 'Margashirsha', 'Pausha', 'Magha', 'Phalguna',
+] as const;
+
+export const festivalSchema = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/),
+  name: nameSchema,
+  month: z.enum(LUNAR_MONTH_KEYS),
+  paksha: z.enum(['shukla', 'krishna']),
+  /** Tithi number within the paksha, 1..15. */
+  tithi: z.number().int().min(1).max(15),
+  observance: z.enum(OBSERVANCE_RULES),
+  regionNotes: z.string(),
+  provenance: provenanceSchema,
+});
+export type FestivalRule = z.infer<typeof festivalSchema>;
+
+export const festivalsSchema = z.object({
+  header: z.string().startsWith('UNVERIFIED'),
+  description: z.string(),
+  monthSystem: z.literal('amanta'),
+  festivals: z.array(festivalSchema).min(1),
+});
+
+export const FESTIVALS = festivalsSchema.parse(festivalsJson);
 
 /** True when a data file's provenance has been filled in by a human. */
 export function isVerified(p: Provenance): boolean {
