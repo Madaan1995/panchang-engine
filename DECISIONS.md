@@ -110,3 +110,30 @@ All direct dependencies are MIT, Apache-2.0, BSD or ISC (checked with `npm view 
   the two halves of the nija purnimanta month).
 - **Kshaya masa** (a lunation with two sankrantis, very rare) is not flagged; with the
   naming rule above the following month simply skips a name. Flagged in HANDOFF.md.
+
+## Festivals
+
+- **SPEC discrepancy — Diwali month (needs human confirmation).** SPEC §6 says "Diwali
+  falls on Amavasya of Kartika (amanta) / Ashvin (purnimanta)". As far as I can tell this
+  is reversed: in amanta reckoning the Krishna paksha belongs to the same month as the
+  preceding Shukla paksha, and Kartika Shukla Pratipada (Govardhan Puja / Bali Pratipada /
+  Gujarati New Year) is the day *after* Diwali, so Diwali is the last day of **amanta
+  Ashvin**. In purnimanta reckoning the Krishna paksha is named after the following month,
+  so the same day is **purnimanta Kartika** Amavasya (the usual North Indian statement).
+  `data/festivals.json` encodes Diwali as amanta Ashvin Krishna 15, and the consistency
+  test asserts amanta Ashvin / purnimanta Kartika. SPEC.md is not edited. If the human
+  disagrees, change one line in `data/festivals.json` and the test.
+- **Festival months are written in amanta** (`"monthSystem": "amanta"` at the top of the
+  file) and `tithi` is the number within the paksha (Krishna 15 = Amavasya), which is how
+  rules are usually stated. Festivals are only matched in nija (non-adhik) months.
+- **Observance decision rule:** the festival is on the panchang day whose deciding window
+  (sunrise instant, Nishita, Pradosh, Aparahna) is covered most by the tithi; ties go to the
+  earlier day; if no window is touched, the day containing most of the tithi is used and
+  `fallbackUsed` is set. This is a simplification of the classical decision texts.
+- **Window definitions** (in `data/observance-windows.json`): Pradosh = first 3 of 15 night
+  muhurtas after sunset; Nishita (for `tithi_at_midnight`) = 8th night muhurta; Aparahna =
+  4th of 5 day parts.
+- **Spec rule set has no Madhyahna or moonrise rule.** Ram Navami and Ganesh Chaturthi are
+  traditionally decided at Madhyahna and Karva Chauth at moonrise; they use sunrise /
+  sunrise / Pradosh respectively, with a note in `regionNotes`. Bhadra (Vishti) avoidance
+  for Holika Dahan and Raksha Bandhan is not modelled.

@@ -35,7 +35,7 @@ when its acceptance criteria are covered by tests and
 
 ## 6. Festivals
 - [x] 6.1 `data/festivals.json` (10 festivals) + observance-window data — 10 festivals (amanta months) + window definitions, zod-validated, provenance empty (`feat: add festival rule data and observance windows`)
-- [ ] 6.2 `festivals(year, location)` + Diwali internal-consistency test
+- [x] 6.2 `festivals(year, location)` + Diwali internal-consistency test — max window-coverage day rule; Diwali consistency (amanta Ashvin/purnimanta Kartika, spec reversed — see DECISIONS) (`feat: compute festival dates from rule data`)
 
 ## 7. Muhurat finder
 - [ ] 7.1 Muhurat rule sets in `data/muhurat-rules/*.json`
