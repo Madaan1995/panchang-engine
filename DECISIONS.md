@@ -83,3 +83,9 @@ All direct dependencies are MIT, Apache-2.0, BSD or ISC (checked with `npm view 
   so evaluating the element at a returned boundary gives the element that starts there.
 - **Nakshatra segments report `pada: 1`** in their `info` because a segment is the whole
   nakshatra; the pada at a given instant comes from `elementsAtInstant`.
+- **New/full-moon cross-check margin.** Our tithi uses the *apparent* Sun
+  (`SunPosition`, aberration included), as drik panchangas do. astronomy-engine's
+  `MoonPhase`/`SearchMoonPhase` use the *geometric* Sun. The ≈20.5″ difference shifts
+  Amavasya/Purnima ends by ~30–46 s (max 46.4 s over 24 lunations from Jan 2025), inside
+  the spec's 60 s. A second test runs our root finder on `MoonPhase` itself and matches
+  `SearchMoonPhase` within 1 s, showing the residual is the convention, not the finder.

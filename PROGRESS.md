@@ -21,7 +21,7 @@ when its acceptance criteria are covered by tests and
 ## 3. Transitions
 - [x] 3.1 Angle-crossing root finder — marching + Illinois regula falsi, 100 ms tolerance (`feat: add angle-crossing root finder for element boundaries`)
 - [x] 3.2 Day transitions for every element (kshaya and vriddhi handled) — contiguous segments sunrise→next sunrise with kshaya/vriddhi flags (`feat: find start and end of every element in a panchang day`)
-- [ ] 3.3 Cross-check vs astronomy-engine new/full moons (24 lunations), boundary-value and property tests
+- [x] 3.3 Cross-check vs astronomy-engine new/full moons (24 lunations), boundary-value and property tests — 24 lunations within 60 s (max ~46 s, aberration), 0.01° boundary + monotonic property tests (`test: cross-check tithi transitions against astronomy-engine moon phases`)
 
 ## 4. Day timings
 - [ ] 4.1 Rahu Kaal / Yamaganda / Gulika from a data table
