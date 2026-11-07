@@ -30,7 +30,7 @@ when its acceptance criteria are covered by tests and
 - [x] 4.4 DST tests for Montreal spring-forward and fall-back days — tz-derived 2026 change dates; offsets, round-trip, equal durations, ±1 h sunrise jump (`test: add Montreal DST tests for day timings`)
 
 ## 5. Lunar calendar
-- [ ] 5.1 Lunar month name in amanta and purnimanta systems
+- [x] 5.1 Lunar month name in amanta and purnimanta systems — solar-sign naming rule; Shukla agreement and Krishna +1 properties (`feat: name lunar months in amanta and purnimanta systems`)
 - [ ] 5.2 Adhik maas detection
 
 ## 6. Festivals

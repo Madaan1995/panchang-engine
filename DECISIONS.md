@@ -98,3 +98,15 @@ All direct dependencies are MIT, Apache-2.0, BSD or ISC (checked with `npm view 
   `data/day-timings.json` is editable but the current code always ends at sunrise.
 - **Muhurta and segment indices live in `data/day-timings.json`** with a provenance block,
   because they are traditional rules rather than astronomy.
+
+## Lunar calendar
+
+- **Month naming rule:** amanta month = (sidereal sign of the Sun at the new moon that
+  starts the month) + 1, so Sun in Meena → Chaitra. This makes the adhik month take the
+  name of the following nija month, which is the standard convention.
+- **The month of a panchang day is evaluated at local sunrise**, like the tithi.
+- **Purnimanta Krishna paksha** = next amanta month's name, except inside an adhik amanta
+  month, where both halves keep the adhik name (the adhik lunation is inserted between
+  the two halves of the nija purnimanta month).
+- **Kshaya masa** (a lunation with two sankrantis, very rare) is not flagged; with the
+  naming rule above the following month simply skips a name. Flagged in HANDOFF.md.
