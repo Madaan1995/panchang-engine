@@ -17,7 +17,10 @@
     "test:watch": "vitest",
     "check": "npm run typecheck && npm run lint && npm test",
     "db:generate": "drizzle-kit generate",
-    "db:migrate": "tsx scripts/migrate.ts"
+    "db:migrate": "tsx scripts/migrate.ts",
+    "db:seed": "tsx scripts/seed.ts",
+    "key:create": "tsx scripts/create-api-key.ts",
+    "test:db": "vitest run --config vitest.db.config.mts"
   },
   "dependencies": {
     "astronomy-engine": "2.1.19",

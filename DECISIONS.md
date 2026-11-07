@@ -167,3 +167,11 @@ All direct dependencies are MIT, Apache-2.0, BSD or ISC (checked with `npm view 
   instead of adding `dotenv`.
 - **Docker compose.** Postgres 16 (alpine image). Credentials in `docker-compose.yml` are
   local-development only.
+
+## API keys and metering
+
+- **Key format `pk_live_` + 32 random bytes (base64url).** Stored as hex SHA-256 only, plus
+  a 12-character display prefix. A fast hash is fine because keys are 256-bit random; a
+  slow password hash would add latency to every call without adding security.
+- **CLI:** `npm run key:create -- --name "<label>" [--plan <plan>] [--quota <n>]` prints the
+  plaintext once. `npm run db:seed` inserts `SEED_API_KEY` (development only) if set.
