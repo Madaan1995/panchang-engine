@@ -208,3 +208,22 @@ All direct dependencies are MIT, Apache-2.0, BSD or ISC (checked with `npm view 
   so it is not authenticated or metered.
 - Times on the page show `HH:mm` for the page's date and add the weekday/date when an event
   falls on another day (e.g. a tithi ending after midnight).
+
+## Handoff
+
+- **Reference-fixture harness added (PROGRESS 10.1)**, though not a numbered spec feature:
+  the spec reserves "verify ~20 dates × 3 cities … in `tests/fixtures/reference/*.json`" for
+  the human, and a ready harness makes that a data-entry task. It ships only an empty
+  template.
+- **Docker verification in the build container** needed the proxy CA and host networking,
+  so the image was built from a throwaway copy of the Dockerfile with those two additions.
+  The committed Dockerfile is unchanged. `docker compose up` was then run from a clean
+  clone: migrations and seed ran, `/` returned 200, and an authenticated
+  `/api/v1/panchang` call returned a report.
+- **Process slips (recorded for transparency):** the build's commit helper used
+  `a && b && c` under `set -e`, which does not stop on a failing `a`, so commit 47b5b19
+  went in with a type error (fixed in d97bb87; the helper was then corrected). The
+  Dockerfile/compose changes were swept into commit 24d6f0a. History was not rewritten
+  because it was already pushed.
+- **PROGRESS items are checked off inside the item's own commit** (rather than in a
+  separate commit afterwards) to keep one commit per item.

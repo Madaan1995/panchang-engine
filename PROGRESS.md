@@ -54,7 +54,7 @@ when its acceptance criteria are covered by tests and
 
 ## 10. Docs and handoff
 - [x] 10.1 Reference-fixture harness for the human's verified panchang data (`tests/fixtures/reference/`) — schema-checked fixtures dir + comparison of verified:true entries; ships only an empty template (`test: add harness for human-verified reference fixtures`)
-- [ ] 10.2 Dockerfile + compose app service; ARCHITECTURE.md, HANDOFF.md; docker compose verification
+- [x] 10.2 Dockerfile + compose app service; ARCHITECTURE.md, HANDOFF.md; docker compose verification — ARCHITECTURE.md, HANDOFF.md, README; docker compose up verified from a clean clone (Dockerfile landed in 24d6f0a) (`chore: handoff`)
 
 ## Blocked
-_None yet._
+_None._ Items needing a human (reference data, Diwali month question, priest review, pricing, Stripe, deployment) are recorded as UNVERIFIED in HANDOFF.md rather than blocked.
