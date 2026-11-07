@@ -175,3 +175,10 @@ All direct dependencies are MIT, Apache-2.0, BSD or ISC (checked with `npm view 
   slow password hash would add latency to every call without adding security.
 - **CLI:** `npm run key:create -- --name "<label>" [--plan <plan>] [--quota <n>]` prints the
   plaintext once. `npm run db:seed` inserts `SEED_API_KEY` (development only) if set.
+- **Metering.** Every authenticated request (whatever its status) appends a usage row.
+  Only status < 400 counts toward the monthly quota, so customers are not charged for
+  their own invalid requests or for 429s. Quota months are UTC calendar months.
+  The count-then-insert check is not atomic: under heavy concurrency a key can exceed its
+  quota by a few calls (noted in HANDOFF.md).
+- **Mock plan quotas:** free 1,000 / starter 50,000 / pro 500,000 calls per month,
+  placeholders in `src/server/billing.ts`. A per-key `monthly_quota_override` column exists.

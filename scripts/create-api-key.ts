@@ -8,6 +8,7 @@
  */
 import { parseArgs } from 'node:util';
 import { createDb } from '../src/server/db/client';
+import { MockBillingProvider } from '../src/server/billing';
 import { generateApiKey } from '../src/server/keys';
 import { PgStore } from '../src/server/pgStore';
 import { loadDotEnv } from './env';
@@ -20,6 +21,11 @@ async function main() {
   });
   if (values.name === undefined || values.name.trim() === '') {
     console.error('Usage: npm run key:create -- --name "<label>" [--plan free|starter|pro] [--quota <calls per month>]');
+    process.exit(2);
+  }
+  const billing = new MockBillingProvider();
+  if (!billing.knownPlans().includes(values.plan as string)) {
+    console.error(`Unknown plan '${values.plan}'. Known plans: ${billing.knownPlans().join(', ')}`);
     process.exit(2);
   }
   const quota = values.quota === undefined ? null : Number.parseInt(values.quota, 10);
