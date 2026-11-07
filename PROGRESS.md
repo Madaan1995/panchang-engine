@@ -50,7 +50,7 @@ when its acceptance criteria are covered by tests and
 - [x] 8.6 Route handlers: panchang, festivals, muhurat, cities (400/404/429 behaviour) — panchang/festivals/muhurat/cities; 401/400/404/422/429 tested; verified live against Postgres (`feat: add API route handlers with auth, metering and error mapping`)
 
 ## 9. Web page
-- [ ] 9.1 `/` today's panchang with city picker, mobile friendly, uses core library
+- [x] 9.1 `/` today's panchang with city picker, mobile friendly, uses core library — SSR page, GET-form city picker (default Montreal), mobile CSS, same panchangReport as API (`feat: add mobile-friendly panchang web page`)
 
 ## 10. Docs and handoff
 - [ ] 10.1 ARCHITECTURE.md, HANDOFF.md, docker compose verification

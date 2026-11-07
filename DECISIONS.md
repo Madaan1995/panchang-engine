@@ -197,3 +197,14 @@ All direct dependencies are MIT, Apache-2.0, BSD or ISC (checked with `npm view 
   (the only place the real clock is read, via the injected `now`).
 - **`X-RateLimit-Limit/Remaining/Reset`** headers are included so clients can self-throttle.
 - **Error body shape:** `{ "error": { "code", "message", "issues"? } }`.
+
+## Web page
+
+- **Server-rendered, no client JavaScript.** The city/date/month-system picker is a plain
+  `GET` form, so it works on any phone browser and every view has a shareable URL (useful
+  for SEO). Prev/next-day links are included.
+- **Same code path as the API:** the page calls `panchangReport` (a test asserts the page
+  model's report equals the API's for the same inputs). It never touches the database,
+  so it is not authenticated or metered.
+- Times on the page show `HH:mm` for the page's date and add the weekday/date when an event
+  falls on another day (e.g. a tithi ending after midnight).

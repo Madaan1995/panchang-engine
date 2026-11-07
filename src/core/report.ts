@@ -48,7 +48,7 @@ function named(i: NamedInterval, zone: string) {
   return { name: i.name, ...interval(i, zone) };
 }
 
-function segmentOut<I>(s: DaySegment<I>, zone: string, extra: (info: I) => object) {
+function segmentOut<I, E extends object>(s: DaySegment<I>, zone: string, extra: (info: I) => E) {
   return { number: s.number, ...extra(s.info), ...interval(s, zone), kshaya: s.kshaya, vriddhi: s.vriddhi };
 }
 
