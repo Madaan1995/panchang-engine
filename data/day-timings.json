@@ -10,19 +10,72 @@
   "segmentsPerDay": 8,
   "periods": {
     "rahuKaal": {
-      "name": { "en": "Rahu Kaal", "sa": "राहुकाल" },
+      "name": {
+        "en": "Rahu Kaal",
+        "sa": "राहुकाल"
+      },
       "nature": "inauspicious",
-      "segmentByWeekday": [8, 2, 7, 5, 6, 4, 3]
+      "segmentByWeekday": [
+        8,
+        2,
+        7,
+        5,
+        6,
+        4,
+        3
+      ]
     },
     "yamaganda": {
-      "name": { "en": "Yamaganda", "sa": "यमगण्ड" },
+      "name": {
+        "en": "Yamaganda",
+        "sa": "यमगण्ड"
+      },
       "nature": "inauspicious",
-      "segmentByWeekday": [5, 4, 3, 2, 1, 7, 6]
+      "segmentByWeekday": [
+        5,
+        4,
+        3,
+        2,
+        1,
+        7,
+        6
+      ]
     },
     "gulika": {
-      "name": { "en": "Gulika Kaal", "sa": "गुलिक काल" },
+      "name": {
+        "en": "Gulika Kaal",
+        "sa": "गुलिक काल"
+      },
       "nature": "inauspicious",
-      "segmentByWeekday": [7, 6, 5, 4, 3, 2, 1]
+      "segmentByWeekday": [
+        7,
+        6,
+        5,
+        4,
+        3,
+        2,
+        1
+      ]
+    }
+  },
+  "muhurtas": {
+    "description": "Day (sunrise→sunset) and night (previous sunset→sunrise) are each divided into 15 equal muhurtas.",
+    "muhurtasPerDayOrNight": 15,
+    "abhijit": {
+      "name": {
+        "en": "Abhijit Muhurat",
+        "sa": "अभिजित् मुहूर्त"
+      },
+      "nature": "auspicious",
+      "dayMuhurta": 8
+    },
+    "brahmaMuhurta": {
+      "name": {
+        "en": "Brahma Muhurta",
+        "sa": "ब्रह्म मुहूर्त"
+      },
+      "nature": "auspicious",
+      "nightMuhurtasEndingAtSunrise": 2
     }
   }
 }

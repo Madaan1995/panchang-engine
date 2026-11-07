@@ -60,3 +60,45 @@ describe('Rahu Kaal / Yamaganda / Gulika (mathematical checks)', () => {
     expect(p.start.getTime()).toBe(sunrise.getTime() + (seg - 1) * 3_600_000);
   });
 });
+
+describe('Abhijit muhurat and Brahma muhurta (mathematical checks of the spec definitions)', () => {
+  it('Abhijit is the 8th of 15 equal day-muhurtas, so it is centred on the midpoint of sunrise and sunset', () => {
+    fc.assert(
+      fc.property(recentLocalDateArb, cityArb, (date, city) => {
+        const t = dayTimings(date, city);
+        const muhurta = (t.sunset.getTime() - t.sunrise.getTime()) / 15;
+        const mid = (t.sunrise.getTime() + t.sunset.getTime()) / 2;
+        return (
+          Math.abs(t.abhijit.start.getTime() - (t.sunrise.getTime() + 7 * muhurta)) <= 1 &&
+          Math.abs(t.abhijit.end.getTime() - t.abhijit.start.getTime() - muhurta) <= 1 &&
+          Math.abs((t.abhijit.start.getTime() + t.abhijit.end.getTime()) / 2 - mid) <= 1
+        );
+      }),
+      { numRuns: 50 },
+    );
+  });
+
+  it('Brahma muhurta is the 2 night-muhurtas (night/15 each) ending exactly at sunrise', () => {
+    fc.assert(
+      fc.property(recentLocalDateArb, cityArb, (date, city) => {
+        const t = dayTimings(date, city);
+        const nightMuhurta = (t.sunrise.getTime() - t.previousSunset.getTime()) / 15;
+        return (
+          t.brahmaMuhurta.end.getTime() === t.sunrise.getTime() &&
+          Math.abs(t.brahmaMuhurta.end.getTime() - t.brahmaMuhurta.start.getTime() - 2 * nightMuhurta) <= 1
+        );
+      }),
+      { numRuns: 50 },
+    );
+  });
+
+  it('previous sunset < sunrise < sunset < next sunrise', () => {
+    fc.assert(
+      fc.property(recentLocalDateArb, cityArb, (date, city) => {
+        const t = dayTimings(date, city);
+        return t.previousSunset < t.sunrise && t.sunrise < t.sunset && t.sunset < t.nextSunrise;
+      }),
+      { numRuns: 50 },
+    );
+  });
+});

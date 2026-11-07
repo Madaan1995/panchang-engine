@@ -39,6 +39,16 @@ export const dayTimingsSchema = z.object({
     yamaganda: dayPeriodSchema,
     gulika: dayPeriodSchema,
   }),
+  muhurtas: z.object({
+    description: z.string(),
+    muhurtasPerDayOrNight: z.literal(15),
+    abhijit: z.object({ name: nameSchema, nature: z.literal('auspicious'), dayMuhurta: z.number().int().min(1).max(15) }),
+    brahmaMuhurta: z.object({
+      name: nameSchema,
+      nature: z.literal('auspicious'),
+      nightMuhurtasEndingAtSunrise: z.number().int().min(1).max(15),
+    }),
+  }),
 });
 export type DayTimingsData = z.infer<typeof dayTimingsSchema>;
 

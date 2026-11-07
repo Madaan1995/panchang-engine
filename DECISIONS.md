@@ -89,3 +89,12 @@ All direct dependencies are MIT, Apache-2.0, BSD or ISC (checked with `npm view 
   Amavasya/Purnima ends by ~30–46 s (max 46.4 s over 24 lunations from Jan 2025), inside
   the spec's 60 s. A second test runs our root finder on `MoonPhase` itself and matches
   `SearchMoonPhase` within 1 s, showing the residual is the convention, not the finder.
+
+## Day timings
+
+- **Brahma muhurta = the 2 night-muhurtas ending at sunrise**, exactly as SPEC §4 says
+  (≈ 96 minutes before sunrise to sunrise). Some traditions use only the 14th muhurta
+  (ending one muhurta before sunrise); `nightMuhurtasEndingAtSunrise` in
+  `data/day-timings.json` is editable but the current code always ends at sunrise.
+- **Muhurta and segment indices live in `data/day-timings.json`** with a provenance block,
+  because they are traditional rules rather than astronomy.
