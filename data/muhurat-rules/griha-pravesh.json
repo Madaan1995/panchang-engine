@@ -1,0 +1,60 @@
+{
+  "header": "UNVERIFIED — rules must be reviewed by a priest",
+  "ceremony": "griha-pravesh",
+  "name": {
+    "en": "Griha Pravesh (house-warming)",
+    "sa": "गृह प्रवेश"
+  },
+  "provenance": {
+    "verifiedBy": "",
+    "source": "",
+    "dateVerified": "",
+    "notes": "Placeholder entered by the autonomous build from commonly published lists. Not verified. A priest must review every field."
+  },
+  "description": "A window qualifies when the tithi, nakshatra and weekday are all in the allowed lists and the time is not inside any excluded period or excluded karana. Tithis are numbers within each paksha (15 = Purnima in shukla, Amavasya in krishna). Weekday is the vara of the panchang day.",
+  "notes": "Lunar-month restrictions (e.g. avoiding Chaturmas) and lagna are not modelled.",
+  "timeOfDay": "day",
+  "minimumWindowMinutes": 15,
+  "allowedTithis": {
+    "shukla": [
+      2,
+      3,
+      5,
+      7,
+      10,
+      11,
+      13
+    ],
+    "krishna": [
+      2,
+      3,
+      5
+    ]
+  },
+  "allowedNakshatras": [
+    "Rohini",
+    "Mrigashira",
+    "Uttara Phalguni",
+    "Chitra",
+    "Anuradha",
+    "Uttara Ashadha",
+    "Uttara Bhadrapada",
+    "Revati"
+  ],
+  "allowedWeekdays": [
+    "Monday",
+    "Wednesday",
+    "Thursday",
+    "Friday"
+  ],
+  "excluded": {
+    "periods": [
+      "rahuKaal",
+      "yamaganda",
+      "gulika"
+    ],
+    "karanas": [
+      "Vishti"
+    ]
+  }
+}

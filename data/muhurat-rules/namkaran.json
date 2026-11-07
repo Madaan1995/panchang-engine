@@ -1,0 +1,72 @@
+{
+  "header": "UNVERIFIED — rules must be reviewed by a priest",
+  "ceremony": "namkaran",
+  "name": {
+    "en": "Namkaran (naming ceremony)",
+    "sa": "नामकरण"
+  },
+  "provenance": {
+    "verifiedBy": "",
+    "source": "",
+    "dateVerified": "",
+    "notes": "Placeholder entered by the autonomous build from commonly published lists. Not verified. A priest must review every field."
+  },
+  "description": "A window qualifies when the tithi, nakshatra and weekday are all in the allowed lists and the time is not inside any excluded period or excluded karana. Tithis are numbers within each paksha (15 = Purnima in shukla, Amavasya in krishna). Weekday is the vara of the panchang day.",
+  "notes": "Usually performed on a specific day after birth (often the 11th or 12th); that constraint is not modelled.",
+  "timeOfDay": "day",
+  "minimumWindowMinutes": 15,
+  "allowedTithis": {
+    "shukla": [
+      1,
+      2,
+      3,
+      5,
+      7,
+      10,
+      11,
+      13
+    ],
+    "krishna": [
+      1,
+      2,
+      3,
+      5,
+      7,
+      10
+    ]
+  },
+  "allowedNakshatras": [
+    "Ashwini",
+    "Rohini",
+    "Mrigashira",
+    "Punarvasu",
+    "Pushya",
+    "Uttara Phalguni",
+    "Hasta",
+    "Chitra",
+    "Swati",
+    "Anuradha",
+    "Uttara Ashadha",
+    "Shravana",
+    "Dhanishtha",
+    "Shatabhisha",
+    "Uttara Bhadrapada",
+    "Revati"
+  ],
+  "allowedWeekdays": [
+    "Monday",
+    "Wednesday",
+    "Thursday",
+    "Friday"
+  ],
+  "excluded": {
+    "periods": [
+      "rahuKaal",
+      "yamaganda",
+      "gulika"
+    ],
+    "karanas": [
+      "Vishti"
+    ]
+  }
+}

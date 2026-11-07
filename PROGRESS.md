@@ -38,7 +38,7 @@ when its acceptance criteria are covered by tests and
 - [x] 6.2 `festivals(year, location)` + Diwali internal-consistency test — max window-coverage day rule; Diwali consistency (amanta Ashvin/purnimanta Kartika, spec reversed — see DECISIONS) (`feat: compute festival dates from rule data`)
 
 ## 7. Muhurat finder
-- [ ] 7.1 Muhurat rule sets in `data/muhurat-rules/*.json`
+- [x] 7.1 Muhurat rule sets in `data/muhurat-rules/*.json` — 4 ceremony rule sets with UNVERIFIED header + provenance, zod-validated (`feat: add muhurat rule sets as data`)
 - [ ] 7.2 `findMuhurats(ceremony, dateRange, location)` with boundary-alignment tests and 366-day limit
 
 ## 8. API
