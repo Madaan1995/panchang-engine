@@ -10,7 +10,7 @@ when its acceptance criteria are covered by tests and
 ## 1. Astronomy layer
 - [x] 1.1 Angle helpers + Lahiri ayanamsa function (documented, cited, UNVERIFIED) — Lahiri via 1956 anchor + IAU 2006 precession, property tests (`feat: add angle helpers and Lahiri ayanamsa`)
 - [x] 1.2 Tropical and sidereal Sun/Moon longitudes at an instant — geocentric true-of-date longitudes, cross-checked vs GeoMoon/MoonPhase (`feat: add Sun and Moon tropical/sidereal longitudes`)
-- [ ] 1.3 `sunTimes(date, location)` with typed polar error
+- [x] 1.3 `sunTimes(date, location)` with typed polar error — SearchRiseSet upper limb + 34′ refraction, typed polar error (`feat: add sunrise/sunset with typed polar error`)
 - [ ] 1.4 `moonTimes(date, location)` with nullable rise/set
 
 ## 2. Panchanga elements at an instant

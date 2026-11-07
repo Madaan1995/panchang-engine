@@ -44,3 +44,23 @@ All direct dependencies are MIT, Apache-2.0, BSD or ISC (checked with `npm view 
 - **Tests run with `TZ=Pacific/Chatham`** (set in `vitest.config.mts`). It is an
   unusual +12:45/+13:45 zone, so any accidental use of the system timezone in code under
   test produces visibly wrong results instead of passing by coincidence on a UTC CI box.
+
+## Astronomy layer
+
+- **Rise/set definition.** astronomy-engine `SearchRiseSet`: the upper limb touches the
+  geometric horizon with a fixed 34′ of refraction (for the Sun: centre ≈ 50′ below the
+  horizon). Observer at the location's elevation, standing on the ground (no horizon dip).
+  A test re-derives this from astronomy-engine's independent `Equator`/`Horizon`
+  functions. Note: astronomy-engine's `Horizon(..., 'normal')` refraction model gives
+  ≈37′ at the horizon, not 34′, so the two must not be mixed.
+- **`sunTimes` throws `NoSunriseSunsetError` (with `condition: 'MIDNIGHT_SUN' | 'POLAR_NIGHT'`)**
+  rather than returning a union type. The spec says "return a typed error"; a typed
+  exception keeps every normal caller simple and the API maps it to HTTP 422.
+  Sunset is "the first sunset after that day's sunrise", which is the evening of the
+  same day everywhere except near the polar circles.
+- **Positions are geocentric** (`SunPosition` apparent Sun, `EclipticGeoMoon`), on the
+  true ecliptic/equinox of date. Panchang elements are properties of the moment, not of
+  the observer; only rise/set times are topocentric.
+- **Time representation.** Core functions take and return `Date` instants (UTC
+  milliseconds) and `YYYY-MM-DD` local dates interpreted in the location's IANA zone via
+  Luxon. Zoned ISO strings are produced only by `src/core/format.ts`.
