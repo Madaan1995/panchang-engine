@@ -53,7 +53,8 @@ when its acceptance criteria are covered by tests and
 - [x] 9.1 `/` today's panchang with city picker, mobile friendly, uses core library — SSR page, GET-form city picker (default Montreal), mobile CSS, same panchangReport as API (`feat: add mobile-friendly panchang web page`)
 
 ## 10. Docs and handoff
-- [ ] 10.1 ARCHITECTURE.md, HANDOFF.md, docker compose verification
+- [x] 10.1 Reference-fixture harness for the human's verified panchang data (`tests/fixtures/reference/`) — schema-checked fixtures dir + comparison of verified:true entries; ships only an empty template (`test: add harness for human-verified reference fixtures`)
+- [ ] 10.2 Dockerfile + compose app service; ARCHITECTURE.md, HANDOFF.md; docker compose verification
 
 ## Blocked
 _None yet._
