@@ -27,7 +27,7 @@ when its acceptance criteria are covered by tests and
 - [x] 4.1 Rahu Kaal / Yamaganda / Gulika from a data table — 8-part day split, weekday segment table in data/day-timings.json (UNVERIFIED) (`feat: add Rahu Kaal, Yamaganda and Gulika from a data table`)
 - [x] 4.2 Abhijit muhurat and Brahma muhurta — 8th of 15 day-muhurtas; 2 night-muhurtas ending at sunrise (`feat: add Abhijit muhurat and Brahma muhurta`)
 - [x] 4.3 Choghadiya (day + night) from a data table — 8 day + 8 night segments from data/choghadiya.json (UNVERIFIED) (`feat: add day and night choghadiya from a data table`)
-- [ ] 4.4 DST tests for Montreal spring-forward and fall-back days
+- [x] 4.4 DST tests for Montreal spring-forward and fall-back days — tz-derived 2026 change dates; offsets, round-trip, equal durations, ±1 h sunrise jump (`test: add Montreal DST tests for day timings`)
 
 ## 5. Lunar calendar
 - [ ] 5.1 Lunar month name in amanta and purnimanta systems
