@@ -24,7 +24,7 @@ when its acceptance criteria are covered by tests and
 - [x] 3.3 Cross-check vs astronomy-engine new/full moons (24 lunations), boundary-value and property tests — 24 lunations within 60 s (max ~46 s, aberration), 0.01° boundary + monotonic property tests (`test: cross-check tithi transitions against astronomy-engine moon phases`)
 
 ## 4. Day timings
-- [ ] 4.1 Rahu Kaal / Yamaganda / Gulika from a data table
+- [x] 4.1 Rahu Kaal / Yamaganda / Gulika from a data table — 8-part day split, weekday segment table in data/day-timings.json (UNVERIFIED) (`feat: add Rahu Kaal, Yamaganda and Gulika from a data table`)
 - [ ] 4.2 Abhijit muhurat and Brahma muhurta
 - [ ] 4.3 Choghadiya (day + night) from a data table
 - [ ] 4.4 DST tests for Montreal spring-forward and fall-back days
