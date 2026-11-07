@@ -42,7 +42,7 @@ when its acceptance criteria are covered by tests and
 - [x] 7.2 `findMuhurats(ceremony, dateRange, location)` with boundary-alignment tests and 366-day limit — event-sweep over transitions + excluded periods; boundaries tested to flip the rule; 366-day limit (`feat: find muhurat windows for a ceremony and date range`)
 
 ## 8. API
-- [ ] 8.1 Bundled city list + lookup
+- [x] 8.1 Bundled city list + lookup — ~110 cities (CA/US/GB/IN emphasis), zod-validated, accent-insensitive search (`feat: add bundled city list and search`)
 - [ ] 8.2 Request validation (zod) and response builders with `conventions` block
 - [ ] 8.3 Postgres schema, SQL migrations, migrate/seed scripts, docker compose
 - [ ] 8.4 API keys: hashing, CLI to create keys, bearer auth
