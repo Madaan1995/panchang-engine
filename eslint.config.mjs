@@ -4,7 +4,7 @@
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
-  { ignores: ['node_modules/', '.next/', 'next-env.d.ts', 'drizzle/meta/'] },
+  { ignores: ['node_modules/', '.next/', 'next-env.d.ts', 'drizzle/meta/', '.scratch/'] },
   ...tseslint.configs.recommended,
   {
     rules: {

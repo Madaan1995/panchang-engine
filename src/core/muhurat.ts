@@ -105,7 +105,7 @@ export function muhuratsForDay(
 
   // Excluded clock periods (all are daytime eighths).
   const periods = inauspiciousPeriods(d.sunrise, d.sunset, vara.number);
-  const excludedPeriods = rule.excluded.periods.map((key) => ({ key, label: PERIOD_LABEL[key], ...periods[key] }));
+  const excludedPeriods = rule.excluded.periods.map((key) => ({ ...periods[key], key, label: PERIOD_LABEL[key] }));
 
   // Step 2: every instant where something can change, with its causes.
   const events = new Map<number, string[]>();
