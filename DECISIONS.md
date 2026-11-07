@@ -72,3 +72,14 @@ All direct dependencies are MIT, Apache-2.0, BSD or ISC (checked with `npm view 
   59 Naga. Karana `number` in outputs is k+1 (1..60).
 - **Names.** English transliteration without diacritics plus Devanagari. Names are not
   religious rules, so they are in `src/core/names.ts` rather than `data/`.
+
+## Transitions
+
+- **Kshaya / vriddhi flags** are computed per panchang day: `kshaya` = starts after this
+  sunrise and ends at or before the next sunrise; `vriddhi` = current at this sunrise and
+  still current at the next sunrise.
+- **Root-finder tolerance is 1 ms**; output times are rounded to whole seconds in
+  `format.ts`. Boundaries returned by the finder are always on the "new element" side,
+  so evaluating the element at a returned boundary gives the element that starts there.
+- **Nakshatra segments report `pada: 1`** in their `info` because a segment is the whole
+  nakshatra; the pada at a given instant comes from `elementsAtInstant`.

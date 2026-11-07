@@ -10,7 +10,7 @@
  *     passes the angle we need. That brackets the crossing between two samples.
  *  2. Narrow the bracket with the Illinois variant of regula falsi (linear
  *     interpolation that cannot stall), falling back to bisection, until the
- *     bracket is shorter than `toleranceMs`.
+ *     bracket is shorter than `toleranceMs` (default 1 ms).
  *
  * Requirements on f: it must increase monotonically and change by less than
  * 180° per step. True for every panchanga function (fastest is yoga, < 17°/day).
@@ -27,7 +27,7 @@ export interface CrossingOptions {
   maxDays: number;
   /** Marching step in days. Default 0.25 (6 hours). */
   stepDays?: number;
-  /** Stop when the bracket is narrower than this. Default 100 ms. */
+  /** Stop when the bracket is narrower than this. Default 1 ms. */
   toleranceMs?: number;
 }
 
@@ -39,7 +39,7 @@ export interface CrossingOptions {
 export function findAngleCrossing(f: AngleFunction, target: number, from: Date, options: CrossingOptions): Date | null {
   const { direction, maxDays } = options;
   const stepMs = (options.stepDays ?? 0.25) * MS_PER_DAY;
-  const toleranceMs = options.toleranceMs ?? 100;
+  const toleranceMs = options.toleranceMs ?? 1;
 
   const f0 = f(from);
   // How many degrees the function must move (forward in time it increases,
@@ -106,7 +106,9 @@ function refine(
       side = 1;
     }
   }
-  // Return the endpoint at which the target has been reached (g ≥ 0), so the
-  // returned instant is never "just before" the boundary.
-  return new Date(b);
+  // Return the bracket end that lies LATER in time, i.e. on the side where the
+  // function has reached the target. Forward that is b; backward it is a
+  // (a is where the backward search had not yet reached the target). Then the
+  // element evaluated at a returned boundary is always the NEW element.
+  return new Date(direction === 1 ? b : a);
 }
