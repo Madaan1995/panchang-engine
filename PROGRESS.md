@@ -15,7 +15,7 @@ when its acceptance criteria are covered by tests and
 
 ## 2. Panchanga elements at an instant
 - [x] 2.1 Name tables (English transliteration + Devanagari) — English + Devanagari tables with structural tests (`feat: add element name tables in English and Devanagari`)
-- [ ] 2.2 Tithi/paksha, nakshatra/pada, yoga, karana at an instant
+- [x] 2.2 Tithi/paksha, nakshatra/pada, yoga, karana at an instant — spec formulas + karana fixed positions, cross-checked vs moon phases (`feat: compute tithi, nakshatra, yoga and karana at an instant`)
 - [ ] 2.3 Vara at local sunrise (`elementsAt(instant, location)`)
 
 ## 3. Transitions

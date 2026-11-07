@@ -64,3 +64,11 @@ All direct dependencies are MIT, Apache-2.0, BSD or ISC (checked with `npm view 
 - **Time representation.** Core functions take and return `Date` instants (UTC
   milliseconds) and `YYYY-MM-DD` local dates interpreted in the location's IANA zone via
   Luxon. Zoned ISO strings are produced only by `src/core/format.ts`.
+
+## Panchanga elements
+
+- **Karana mapping.** Half-tithi index k = floor(elongation / 6°) ∈ 0..59. k=0 Kimstughna,
+  k=1..56 the seven movable karanas (Bava … Vishti) cycling, k=57 Shakuni, 58 Chatushpada,
+  59 Naga. Karana `number` in outputs is k+1 (1..60).
+- **Names.** English transliteration without diacritics plus Devanagari. Names are not
+  religious rules, so they are in `src/core/names.ts` rather than `data/`.
