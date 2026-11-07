@@ -1,9 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import fc from 'fast-check';
-import { DAY_TIMINGS, dayTimingsSchema } from '@/core/data';
+import { CHOGHADIYA, choghadiyaSchema, DAY_TIMINGS, dayTimingsSchema } from '@/core/data';
 import { dayPeriod, dayTimings, splitEqually } from '@/core/dayTimings';
 import { sunTimes } from '@/core/riseSet';
 import { cityArb, recentLocalDateArb } from './helpers/arbitraries';
+import choghadiyaJson from '../data/choghadiya.json';
 import dayTimingsJson from '../data/day-timings.json';
 
 describe('day-timings data file (structural checks; values UNVERIFIED)', () => {
@@ -97,6 +98,56 @@ describe('Abhijit muhurat and Brahma muhurta (mathematical checks of the spec de
       fc.property(recentLocalDateArb, cityArb, (date, city) => {
         const t = dayTimings(date, city);
         return t.previousSunset < t.sunrise && t.sunrise < t.sunset && t.sunset < t.nextSunrise;
+      }),
+      { numRuns: 50 },
+    );
+  });
+});
+
+describe('choghadiya data table (structural checks; sequences UNVERIFIED)', () => {
+  it('validates against its schema with an UNVERIFIED header', () => {
+    expect(() => choghadiyaSchema.parse(choghadiyaJson)).not.toThrow();
+    expect(CHOGHADIYA.header.startsWith('UNVERIFIED')).toBe(true);
+  });
+
+  it('each day and night sequence ends with the choghadiya it starts with and contains all 7 kinds', () => {
+    for (const period of ['day', 'night'] as const) {
+      for (const seq of CHOGHADIYA[period]) {
+        expect(seq[7]).toBe(seq[0]);
+        expect(new Set(seq.slice(0, 7)).size).toBe(7);
+      }
+    }
+  });
+
+  it('day sequences are rotations of one cycle, and so are night sequences', () => {
+    for (const period of ['day', 'night'] as const) {
+      const cycle = CHOGHADIYA[period][0]!.slice(0, 7);
+      for (const seq of CHOGHADIYA[period]) {
+        const offset = cycle.indexOf(seq[0]!);
+        seq.slice(0, 7).forEach((k, i) => expect(k).toBe(cycle[(offset + i) % 7]));
+      }
+    }
+  });
+});
+
+describe('choghadiya timings (mathematical checks)', () => {
+  it('8 equal day segments from sunrise to sunset and 8 equal night segments from sunset to next sunrise', () => {
+    fc.assert(
+      fc.property(recentLocalDateArb, cityArb, (date, city) => {
+        const t = dayTimings(date, city);
+        const { day, night } = t.choghadiya;
+        const dayLen = (t.sunset.getTime() - t.sunrise.getTime()) / 8;
+        const nightLen = (t.nextSunrise.getTime() - t.sunset.getTime()) / 8;
+        return (
+          day.length === 8 &&
+          night.length === 8 &&
+          day[0]!.start.getTime() === t.sunrise.getTime() &&
+          Math.abs(day[7]!.end.getTime() - t.sunset.getTime()) <= 1 &&
+          night[0]!.start.getTime() === t.sunset.getTime() &&
+          Math.abs(night[7]!.end.getTime() - t.nextSunrise.getTime()) <= 1 &&
+          day.every((s, i) => Math.abs(s.end.getTime() - s.start.getTime() - dayLen) <= 1 && s.key === CHOGHADIYA.day[t.weekday]![i]) &&
+          night.every((s, i) => Math.abs(s.end.getTime() - s.start.getTime() - nightLen) <= 1 && s.key === CHOGHADIYA.night[t.weekday]![i])
+        );
       }),
       { numRuns: 50 },
     );

@@ -1,0 +1,37 @@
+{
+  "header": "UNVERIFIED — standard choghadiya sequences, entered from commonly published tables. Must be reviewed before being relied on.",
+  "provenance": {
+    "verifiedBy": "",
+    "source": "",
+    "dateVerified": "",
+    "notes": "Entered by the autonomous build from general knowledge. Pattern: day sequences step through Udveg, Char, Labh, Amrit, Kaal, Shubh, Rog starting from the weekday lord's choghadiya; night sequences step through Shubh, Amrit, Char, Rog, Kaal, Labh, Udveg starting from the lord of the 5th weekday. Not checked against a cited source."
+  },
+  "description": "Day (sunrise→sunset) and night (sunset→next sunrise) are each split into 8 equal choghadiyas. Arrays are indexed by weekday of the panchang day: 0 = Sunday … 6 = Saturday.",
+  "choghadiyas": {
+    "Udveg": { "name": { "en": "Udveg", "sa": "उद्वेग" }, "nature": "inauspicious" },
+    "Char": { "name": { "en": "Char", "sa": "चर" }, "nature": "neutral" },
+    "Labh": { "name": { "en": "Labh", "sa": "लाभ" }, "nature": "auspicious" },
+    "Amrit": { "name": { "en": "Amrit", "sa": "अमृत" }, "nature": "auspicious" },
+    "Kaal": { "name": { "en": "Kaal", "sa": "काल" }, "nature": "inauspicious" },
+    "Shubh": { "name": { "en": "Shubh", "sa": "शुभ" }, "nature": "auspicious" },
+    "Rog": { "name": { "en": "Rog", "sa": "रोग" }, "nature": "inauspicious" }
+  },
+  "day": [
+    ["Udveg", "Char", "Labh", "Amrit", "Kaal", "Shubh", "Rog", "Udveg"],
+    ["Amrit", "Kaal", "Shubh", "Rog", "Udveg", "Char", "Labh", "Amrit"],
+    ["Rog", "Udveg", "Char", "Labh", "Amrit", "Kaal", "Shubh", "Rog"],
+    ["Labh", "Amrit", "Kaal", "Shubh", "Rog", "Udveg", "Char", "Labh"],
+    ["Shubh", "Rog", "Udveg", "Char", "Labh", "Amrit", "Kaal", "Shubh"],
+    ["Char", "Labh", "Amrit", "Kaal", "Shubh", "Rog", "Udveg", "Char"],
+    ["Kaal", "Shubh", "Rog", "Udveg", "Char", "Labh", "Amrit", "Kaal"]
+  ],
+  "night": [
+    ["Shubh", "Amrit", "Char", "Rog", "Kaal", "Labh", "Udveg", "Shubh"],
+    ["Char", "Rog", "Kaal", "Labh", "Udveg", "Shubh", "Amrit", "Char"],
+    ["Kaal", "Labh", "Udveg", "Shubh", "Amrit", "Char", "Rog", "Kaal"],
+    ["Udveg", "Shubh", "Amrit", "Char", "Rog", "Kaal", "Labh", "Udveg"],
+    ["Amrit", "Char", "Rog", "Kaal", "Labh", "Udveg", "Shubh", "Amrit"],
+    ["Rog", "Kaal", "Labh", "Udveg", "Shubh", "Amrit", "Char", "Rog"],
+    ["Labh", "Udveg", "Shubh", "Amrit", "Char", "Rog", "Kaal", "Labh"]
+  ]
+}

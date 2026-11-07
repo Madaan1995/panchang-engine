@@ -10,6 +10,7 @@
  * JSON imports are bundled at build time, so this is not I/O.
  */
 import { z } from 'zod';
+import choghadiyaJson from '../../data/choghadiya.json';
 import dayTimingsJson from '../../data/day-timings.json';
 
 export const provenanceSchema = z.object({
@@ -53,6 +54,21 @@ export const dayTimingsSchema = z.object({
 export type DayTimingsData = z.infer<typeof dayTimingsSchema>;
 
 export const DAY_TIMINGS: DayTimingsData = dayTimingsSchema.parse(dayTimingsJson);
+
+const choghadiyaKey = z.enum(['Udveg', 'Char', 'Labh', 'Amrit', 'Kaal', 'Shubh', 'Rog']);
+export type ChoghadiyaKey = z.infer<typeof choghadiyaKey>;
+
+export const choghadiyaSchema = z.object({
+  header: z.string().startsWith('UNVERIFIED'),
+  provenance: provenanceSchema,
+  description: z.string(),
+  choghadiyas: z.record(choghadiyaKey, z.object({ name: nameSchema, nature: z.enum(['auspicious', 'inauspicious', 'neutral']) })),
+  day: weekdayTable(z.array(choghadiyaKey).length(8)),
+  night: weekdayTable(z.array(choghadiyaKey).length(8)),
+});
+export type ChoghadiyaData = z.infer<typeof choghadiyaSchema>;
+
+export const CHOGHADIYA: ChoghadiyaData = choghadiyaSchema.parse(choghadiyaJson);
 
 /** True when a data file's provenance has been filled in by a human. */
 export function isVerified(p: Provenance): boolean {

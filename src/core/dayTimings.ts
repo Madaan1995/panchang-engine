@@ -7,7 +7,7 @@
  * DST change during the night cannot create negative or doubled segments; only
  * the formatting to local wall-clock time is zone-aware.
  */
-import { DAY_TIMINGS } from './data';
+import { CHOGHADIYA, DAY_TIMINGS, type ChoghadiyaKey } from './data';
 import type { Name } from './names';
 import { sunTimes } from './riseSet';
 import { addDays } from './time';
@@ -74,6 +74,38 @@ export function brahmaMuhurta(previousSunset: Date, sunrise: Date): NamedInterva
   return { key: 'brahmaMuhurta', name: b.name, start: first.start, end: sunrise };
 }
 
+export interface ChoghadiyaSegment extends Interval {
+  key: ChoghadiyaKey;
+  name: Name;
+  nature: 'auspicious' | 'inauspicious' | 'neutral';
+  period: 'day' | 'night';
+  /** 1..8 within the day or the night. */
+  index: number;
+}
+
+/**
+ * Choghadiya: 8 equal day segments (sunrise→sunset) and 8 equal night
+ * segments (sunset→next sunrise), named from the weekday tables in
+ * data/choghadiya.json. The weekday is the vara of the panchang day, so the
+ * night after Sunday's sunset uses Sunday's night table.
+ */
+export function choghadiya(
+  sunrise: Date,
+  sunset: Date,
+  nextSunrise: Date,
+  weekday: number,
+): { day: ChoghadiyaSegment[]; night: ChoghadiyaSegment[] } {
+  const build = (period: 'day' | 'night', start: Date, end: Date): ChoghadiyaSegment[] => {
+    const keys = CHOGHADIYA[period][weekday] as ChoghadiyaKey[];
+    return splitEqually(start, end, 8).map((interval, i) => {
+      const key = keys[i] as ChoghadiyaKey;
+      const meta = CHOGHADIYA.choghadiyas[key];
+      return { ...interval, key, name: meta.name, nature: meta.nature, period, index: i + 1 };
+    });
+  };
+  return { day: build('day', sunrise, sunset), night: build('night', sunset, nextSunrise) };
+}
+
 export interface DayTimings extends InauspiciousPeriods {
   date: LocalDate;
   weekday: number;
@@ -84,6 +116,7 @@ export interface DayTimings extends InauspiciousPeriods {
   nextSunrise: Date;
   abhijit: NamedInterval;
   brahmaMuhurta: NamedInterval;
+  choghadiya: { day: ChoghadiyaSegment[]; night: ChoghadiyaSegment[] };
 }
 
 /** Day timings for the panchang day starting at sunrise on `date`. */
@@ -102,5 +135,6 @@ export function dayTimings(date: LocalDate, location: GeoLocation): DayTimings {
     ...inauspiciousPeriods(sunrise, sunset, weekday),
     abhijit: abhijitMuhurat(sunrise, sunset),
     brahmaMuhurta: brahmaMuhurta(previousSunset, sunrise),
+    choghadiya: choghadiya(sunrise, sunset, nextSunrise, weekday),
   };
 }
