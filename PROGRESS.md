@@ -14,7 +14,7 @@ when its acceptance criteria are covered by tests and
 - [x] 1.4 `moonTimes(date, location)` with nullable rise/set — moonrise/moonset nullable per local date (`feat: add moonrise/moonset with null for absent events`)
 
 ## 2. Panchanga elements at an instant
-- [ ] 2.1 Name tables (English transliteration + Devanagari)
+- [x] 2.1 Name tables (English transliteration + Devanagari) — English + Devanagari tables with structural tests (`feat: add element name tables in English and Devanagari`)
 - [ ] 2.2 Tithi/paksha, nakshatra/pada, yoga, karana at an instant
 - [ ] 2.3 Vara at local sunrise (`elementsAt(instant, location)`)
 
