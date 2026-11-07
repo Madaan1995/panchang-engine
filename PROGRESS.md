@@ -47,7 +47,7 @@ when its acceptance criteria are covered by tests and
 - [x] 8.3 Postgres schema, SQL migrations, migrate/seed scripts, docker compose — Drizzle schema → drizzle/0000_init.sql, migrator script, compose Postgres 16 (`feat: add Postgres schema, SQL migrations and docker compose database`)
 - [x] 8.4 API keys: hashing, CLI to create keys, bearer auth — SHA-256-hashed keys, key:create CLI prints once, Bearer auth, PgStore + memory store (`feat: add hashed API keys, key creation CLI and bearer auth`)
 - [x] 8.5 Metering, monthly quota, `BillingProvider` mock — usage row per call, UTC-month quota (2xx/3xx only), mock plan quotas, 429 message (`feat: add usage metering, monthly quotas and mock billing provider`)
-- [ ] 8.6 Route handlers: panchang, festivals, muhurat, cities (400/404/429 behaviour)
+- [x] 8.6 Route handlers: panchang, festivals, muhurat, cities (400/404/429 behaviour) — panchang/festivals/muhurat/cities; 401/400/404/422/429 tested; verified live against Postgres (`feat: add API route handlers with auth, metering and error mapping`)
 
 ## 9. Web page
 - [ ] 9.1 `/` today's panchang with city picker, mobile friendly, uses core library

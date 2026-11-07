@@ -182,3 +182,18 @@ All direct dependencies are MIT, Apache-2.0, BSD or ISC (checked with `npm view 
   quota by a few calls (noted in HANDOFF.md).
 - **Mock plan quotas:** free 1,000 / starter 50,000 / pro 500,000 calls per month,
   placeholders in `src/server/billing.ts`. A per-key `monthly_quota_override` column exists.
+
+## HTTP API
+
+- **Handlers are framework-independent** (`src/server/api.ts`, plain `Request` →
+  `Response`) and the Next.js route files are one-line wrappers. Tests call the handlers
+  directly with an in-memory store and a fixed clock.
+- **All `/api/v1/*` endpoints require a key, including `/cities`**, and are metered: the
+  spec describes the API as API-key authenticated without exceptions.
+- **Status codes:** 401 missing/invalid/revoked key (not metered), 429 quota exceeded
+  (metered, not billed), 400 zod validation failure with `issues`, 404 unknown city, 422
+  when the Sun does not rise or set on that date (polar), 500 otherwise.
+- **`date` is optional** on `/panchang`; it defaults to today in the location's timezone
+  (the only place the real clock is read, via the injected `now`).
+- **`X-RateLimit-Limit/Remaining/Reset`** headers are included so clients can self-throttle.
+- **Error body shape:** `{ "error": { "code", "message", "issues"? } }`.
