@@ -8,7 +8,7 @@ when its acceptance criteria are covered by tests and
 - [x] 0.1 Project scaffold: TypeScript strict, ESLint (with core-purity guard), Vitest, check scripts — `chore: scaffold project`
 
 ## 1. Astronomy layer
-- [ ] 1.1 Angle helpers + Lahiri ayanamsa function (documented, cited, UNVERIFIED)
+- [x] 1.1 Angle helpers + Lahiri ayanamsa function (documented, cited, UNVERIFIED) — Lahiri via 1956 anchor + IAU 2006 precession, property tests (`feat: add angle helpers and Lahiri ayanamsa`)
 - [ ] 1.2 Tropical and sidereal Sun/Moon longitudes at an instant
 - [ ] 1.3 `sunTimes(date, location)` with typed polar error
 - [ ] 1.4 `moonTimes(date, location)` with nullable rise/set
