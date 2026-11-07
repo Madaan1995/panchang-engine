@@ -39,7 +39,7 @@ when its acceptance criteria are covered by tests and
 
 ## 7. Muhurat finder
 - [x] 7.1 Muhurat rule sets in `data/muhurat-rules/*.json` — 4 ceremony rule sets with UNVERIFIED header + provenance, zod-validated (`feat: add muhurat rule sets as data`)
-- [ ] 7.2 `findMuhurats(ceremony, dateRange, location)` with boundary-alignment tests and 366-day limit
+- [x] 7.2 `findMuhurats(ceremony, dateRange, location)` with boundary-alignment tests and 366-day limit — event-sweep over transitions + excluded periods; boundaries tested to flip the rule; 366-day limit (`feat: find muhurat windows for a ceremony and date range`)
 
 ## 8. API
 - [ ] 8.1 Bundled city list + lookup

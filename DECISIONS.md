@@ -137,3 +137,19 @@ All direct dependencies are MIT, Apache-2.0, BSD or ISC (checked with `npm view 
   traditionally decided at Madhyahna and Karva Chauth at moonrise; they use sunrise /
   sunrise / Pradosh respectively, with a note in `regionNotes`. Bhadra (Vishti) avoidance
   for Holika Dahan and Raksha Bandhan is not modelled.
+
+## Muhurat finder
+
+- **Rule-file format.** Tithis are listed per paksha (`{"shukla": [2,3,5], "krishna": [2]}`),
+  nakshatras and weekdays by English name; zod validates names against the name tables, so
+  a typo fails at startup. Excluded periods: `rahuKaal`, `yamaganda`, `gulika`; excluded
+  karanas by name (e.g. `Vishti`, a.k.a. Bhadra).
+- **`timeOfDay`** (`day` = sunrise→sunset, `anytime` = sunrise→next sunrise) and
+  **`minimumWindowMinutes`** (default 15) were added to each rule file so slivers between
+  two transitions are not reported as muhurats. Both are editable data.
+- **Contents of the four rule files are placeholders** from commonly published lists, not
+  checked against a source. Lagna, lunar-month/season restrictions (Chaturmas etc.),
+  planetary combustion and personal charts are out of scope.
+- **Adjacent qualifying pieces are merged** into one window even if the tithi or nakshatra
+  changes inside it (both allowed); the window lists every tithi/nakshatra it spans.
+- **Range limit:** `from`..`to` inclusive, at most 366 days.
