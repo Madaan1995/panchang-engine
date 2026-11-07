@@ -56,7 +56,7 @@ describe('month naming (property checks of the documented rule)', () => {
       fc.property(instantArb, (d) => {
         const a = lunarMonthAt(d, 'amanta');
         const p = lunarMonthAt(d, 'purnimanta');
-        if (a.paksha !== 'krishna') return true;
+        if (a.paksha !== 'krishna' || a.amanta.isAdhik) return true;
         return p.index === (a.index + 1) % 12;
       }),
       { numRuns: 60 },
@@ -74,5 +74,54 @@ describe('month naming (property checks of the documented rule)', () => {
     }
     // In 5 years there are ~2 adhik months; every other step advances by exactly one.
     expect(normalSteps).toBeGreaterThanOrEqual(55);
+  });
+});
+
+describe('adhik maas detection (property checks)', () => {
+  /** All amanta months from `fromMs` for `count` lunations. */
+  function months(fromMs: number, count: number) {
+    const out = [amantaMonthContaining(new Date(fromMs))];
+    for (let i = 1; i < count; i++) out.push(amantaMonthContaining(new Date(out[i - 1]!.end.getTime() + DAY)));
+    return out;
+  }
+  const lunations = months(Date.UTC(2000, 0, 15), 19 * 12 + 7 + 12); // > 19 years
+
+  it('a month is adhik exactly when no sankranti occurs in it (Sun in the same sign at both new moons)', () => {
+    for (const m of lunations) {
+      const f = sunSiderealFunction();
+      // Independent check: sample the Sun's sign daily through the month; adhik ⇔ it never changes.
+      const signs = new Set<number>();
+      for (let t = m.start.getTime(); t < m.end.getTime(); t += DAY / 4) signs.add(Math.floor(f(new Date(t)) / 30));
+      signs.add(Math.floor(f(m.end) / 30));
+      expect(m.isAdhik).toBe(signs.size === 1);
+    }
+  });
+
+  it('an adhik month has the same name as the following (nija) month, which is not adhik', () => {
+    for (let i = 0; i < lunations.length - 1; i++) {
+      const m = lunations[i]!;
+      if (!m.isAdhik) continue;
+      expect(lunations[i + 1]!.index).toBe(m.index);
+      expect(lunations[i + 1]!.isAdhik).toBe(false);
+    }
+  });
+
+  it('Metonic property: any 19-year span (235 lunations) contains 6–8 adhik months (7 on average)', () => {
+    for (let start = 0; start + 235 <= lunations.length; start += 12) {
+      const n = lunations.slice(start, start + 235).filter((m) => m.isAdhik).length;
+      expect(n).toBeGreaterThanOrEqual(6);
+      expect(n).toBeLessThanOrEqual(8);
+    }
+  });
+
+  it('adhik flag is returned for dates in an adhik month in both systems (both pakshas)', () => {
+    const adhik = lunations.find((m) => m.isAdhik)!;
+    const shukla = new Date(adhik.start.getTime() + 5 * DAY);
+    const krishna = new Date(adhik.start.getTime() + 20 * DAY);
+    for (const system of ['amanta', 'purnimanta'] as const) {
+      expect(lunarMonthAt(shukla, system).isAdhik).toBe(true);
+      expect(lunarMonthAt(krishna, system).isAdhik).toBe(true);
+      expect(lunarMonthAt(krishna, system).index).toBe(adhik.index);
+    }
   });
 });

@@ -41,6 +41,12 @@ export interface AmantaMonth {
   /** Sidereal sign of the Sun at the start and end (0 = Mesha … 11 = Meena). */
   sunRashiAtStart: number;
   sunRashiAtEnd: number;
+  /**
+   * ADHIK (intercalary) month: no solar sankranti happens during the lunation,
+   * i.e. the Sun is in the same sidereal sign at both new moons. It carries
+   * the same name as the following (nija) month.
+   */
+  isAdhik: boolean;
 }
 
 function rashiAt(instant: Date, ayanamsa: AyanamsaName): number {
@@ -62,7 +68,15 @@ export function amantaMonthBetween(start: Date, end: Date, ayanamsa: AyanamsaNam
   const sunRashiAtStart = rashiAt(start, ayanamsa);
   const sunRashiAtEnd = rashiAt(end, ayanamsa);
   const index = (sunRashiAtStart + 1) % 12;
-  return { start, end, index, name: nameAt(LUNAR_MONTH_NAMES, index + 1), sunRashiAtStart, sunRashiAtEnd };
+  return {
+    start,
+    end,
+    index,
+    name: nameAt(LUNAR_MONTH_NAMES, index + 1),
+    sunRashiAtStart,
+    sunRashiAtEnd,
+    isAdhik: sunRashiAtStart === sunRashiAtEnd,
+  };
 }
 
 export interface LunarMonthInfo {
@@ -71,6 +85,8 @@ export interface LunarMonthInfo {
   index: number;
   name: Name;
   paksha: Paksha;
+  /** True when this date falls in an adhik (leap) month in the requested system. */
+  isAdhik: boolean;
   /** The amanta month this instant falls in (always reported, whatever the system). */
   amanta: AmantaMonth;
   /** Sun's sidereal sign at the instant. */
@@ -82,8 +98,12 @@ export function lunarMonthAt(instant: Date, system: MonthSystem = 'purnimanta', 
   const amanta = amantaMonthContaining(instant, ayanamsa);
   const paksha = tithiFromElongation(angleFunctionFor('tithi', ayanamsa)(instant)).paksha;
   let index = amanta.index;
-  if (system === 'purnimanta' && paksha === 'krishna') {
+  let isAdhik = amanta.isAdhik;
+  if (system === 'purnimanta' && paksha === 'krishna' && !amanta.isAdhik) {
+    // The waning half belongs to the NEXT (nija) month in purnimanta reckoning.
+    // Inside an adhik lunation both halves stay in the adhik month.
     index = (amanta.index + 1) % 12;
+    isAdhik = false;
   }
   const r = rashiAt(instant, ayanamsa);
   return {
@@ -91,6 +111,7 @@ export function lunarMonthAt(instant: Date, system: MonthSystem = 'purnimanta', 
     index,
     name: nameAt(LUNAR_MONTH_NAMES, index + 1),
     paksha,
+    isAdhik,
     amanta,
     sunRashi: { index: r, name: nameAt(RASHI_NAMES, r + 1) },
   };

@@ -31,7 +31,7 @@ when its acceptance criteria are covered by tests and
 
 ## 5. Lunar calendar
 - [x] 5.1 Lunar month name in amanta and purnimanta systems — solar-sign naming rule; Shukla agreement and Krishna +1 properties (`feat: name lunar months in amanta and purnimanta systems`)
-- [ ] 5.2 Adhik maas detection
+- [x] 5.2 Adhik maas detection — isAdhik when no sankranti; nija month shares name; Metonic 6–8 per 19 y (`feat: detect adhik maas`)
 
 ## 6. Festivals
 - [ ] 6.1 `data/festivals.json` (10 festivals) + observance-window data
