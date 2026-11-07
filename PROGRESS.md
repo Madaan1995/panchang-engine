@@ -19,7 +19,7 @@ when its acceptance criteria are covered by tests and
 - [x] 2.3 Vara at local sunrise (`elementsAt(instant, location)`) — vara = weekday of the sunrise that starts the panchang day (`feat: compute vara at local sunrise`)
 
 ## 3. Transitions
-- [ ] 3.1 Angle-crossing root finder
+- [x] 3.1 Angle-crossing root finder — marching + Illinois regula falsi, 100 ms tolerance (`feat: add angle-crossing root finder for element boundaries`)
 - [ ] 3.2 Day transitions for every element (kshaya and vriddhi handled)
 - [ ] 3.3 Cross-check vs astronomy-engine new/full moons (24 lunations), boundary-value and property tests
 
