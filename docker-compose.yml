@@ -1,0 +1,35 @@
+# Local development stack.
+#   docker compose up   → Postgres 16 on :5432 and the app on http://localhost:3000
+# The app container applies migrations and the dev seed on start.
+# Credentials here are for LOCAL DEVELOPMENT ONLY.
+services:
+  app:
+    build: .
+    environment:
+      DATABASE_URL: postgres://panchang:panchang@db:5432/panchang
+      # Optional dev key, read from .env if present (see .env.example).
+      SEED_API_KEY: ${SEED_API_KEY:-}
+    ports:
+      - "3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: panchang
+      POSTGRES_PASSWORD: panchang
+      POSTGRES_DB: panchang
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U panchang -d panchang"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+volumes:
+  pgdata:

@@ -1,0 +1,81 @@
+{
+  "header": "UNVERIFIED — traditional weekday lookup tables, entered from commonly published panchang conventions. Must be reviewed before being relied on.",
+  "provenance": {
+    "verifiedBy": "",
+    "source": "",
+    "dateVerified": "",
+    "notes": "Entered by the autonomous build from general knowledge of the widely published tables. Not checked against a cited source."
+  },
+  "description": "The daytime (sunrise to sunset) is split into 8 equal parts numbered 1..8. For each period, segmentByWeekday[w] gives the part number for weekday w, where 0 = Sunday (Ravivara) … 6 = Saturday (Shanivara). The weekday is the vara of the panchang day.",
+  "segmentsPerDay": 8,
+  "periods": {
+    "rahuKaal": {
+      "name": {
+        "en": "Rahu Kaal",
+        "sa": "राहुकाल"
+      },
+      "nature": "inauspicious",
+      "segmentByWeekday": [
+        8,
+        2,
+        7,
+        5,
+        6,
+        4,
+        3
+      ]
+    },
+    "yamaganda": {
+      "name": {
+        "en": "Yamaganda",
+        "sa": "यमगण्ड"
+      },
+      "nature": "inauspicious",
+      "segmentByWeekday": [
+        5,
+        4,
+        3,
+        2,
+        1,
+        7,
+        6
+      ]
+    },
+    "gulika": {
+      "name": {
+        "en": "Gulika Kaal",
+        "sa": "गुलिक काल"
+      },
+      "nature": "inauspicious",
+      "segmentByWeekday": [
+        7,
+        6,
+        5,
+        4,
+        3,
+        2,
+        1
+      ]
+    }
+  },
+  "muhurtas": {
+    "description": "Day (sunrise→sunset) and night (previous sunset→sunrise) are each divided into 15 equal muhurtas.",
+    "muhurtasPerDayOrNight": 15,
+    "abhijit": {
+      "name": {
+        "en": "Abhijit Muhurat",
+        "sa": "अभिजित् मुहूर्त"
+      },
+      "nature": "auspicious",
+      "dayMuhurta": 8
+    },
+    "brahmaMuhurta": {
+      "name": {
+        "en": "Brahma Muhurta",
+        "sa": "ब्रह्म मुहूर्त"
+      },
+      "nature": "auspicious",
+      "nightMuhurtasEndingAtSunrise": 2
+    }
+  }
+}

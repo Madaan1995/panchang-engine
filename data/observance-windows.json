@@ -1,0 +1,35 @@
+{
+  "header": "UNVERIFIED — definitions of the time windows used by festival observance rules. Must be reviewed by a priest.",
+  "provenance": {
+    "verifiedBy": "",
+    "source": "",
+    "dateVerified": "",
+    "notes": "Entered by the autonomous build from general knowledge of common definitions. Traditions differ (e.g. some define Pradosh as 2 ghatis either side of sunset)."
+  },
+  "description": "Each observance rule names a window on a panchang day. A festival is observed on the day whose window overlaps the festival's tithi the most (see src/core/festivals.ts). 'instant' windows are a single moment; 'dayParts' splits sunrise→sunset into equal parts; 'nightMuhurtas' splits sunset→next sunrise into 15 equal muhurtas (1-based, inclusive).",
+  "windows": {
+    "tithi_at_sunrise": {
+      "name": { "en": "Sunrise", "sa": "सूर्योदय" },
+      "kind": "instant",
+      "at": "sunrise"
+    },
+    "tithi_at_midnight": {
+      "name": { "en": "Nishita Kaal (midnight muhurta)", "sa": "निशीथ काल" },
+      "kind": "nightMuhurtas",
+      "from": 8,
+      "to": 8
+    },
+    "tithi_during_pradosh": {
+      "name": { "en": "Pradosh Kaal", "sa": "प्रदोष काल" },
+      "kind": "nightMuhurtas",
+      "from": 1,
+      "to": 3
+    },
+    "tithi_during_aparahna": {
+      "name": { "en": "Aparahna Kaal", "sa": "अपराह्ण काल" },
+      "kind": "dayParts",
+      "parts": 5,
+      "part": 4
+    }
+  }
+}

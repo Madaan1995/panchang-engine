@@ -1,0 +1,1055 @@
+{
+  "provenance": {
+    "verifiedBy": "",
+    "source": "",
+    "dateVerified": "",
+    "notes": "Approximate city-centre coordinates (4 decimals) entered by the autonomous build from general knowledge; timezones are IANA zone names. Not verified against a gazetteer. A 0.01° error moves sunrise by roughly 2–4 seconds."
+  },
+  "description": "Bundled city list for the API's city= parameter and the web page picker. id = slug of name + ISO 3166-1 alpha-2 country code.",
+  "cities": [
+    {
+      "id": "montreal-ca",
+      "name": "Montreal",
+      "region": "Quebec",
+      "country": "CA",
+      "latitude": 45.5017,
+      "longitude": -73.5673,
+      "timezone": "America/Toronto"
+    },
+    {
+      "id": "laval-ca",
+      "name": "Laval",
+      "region": "Quebec",
+      "country": "CA",
+      "latitude": 45.6066,
+      "longitude": -73.7124,
+      "timezone": "America/Toronto"
+    },
+    {
+      "id": "quebec-city-ca",
+      "name": "Quebec City",
+      "region": "Quebec",
+      "country": "CA",
+      "latitude": 46.8139,
+      "longitude": -71.208,
+      "timezone": "America/Toronto"
+    },
+    {
+      "id": "toronto-ca",
+      "name": "Toronto",
+      "region": "Ontario",
+      "country": "CA",
+      "latitude": 43.6532,
+      "longitude": -79.3832,
+      "timezone": "America/Toronto"
+    },
+    {
+      "id": "brampton-ca",
+      "name": "Brampton",
+      "region": "Ontario",
+      "country": "CA",
+      "latitude": 43.7315,
+      "longitude": -79.7624,
+      "timezone": "America/Toronto"
+    },
+    {
+      "id": "mississauga-ca",
+      "name": "Mississauga",
+      "region": "Ontario",
+      "country": "CA",
+      "latitude": 43.589,
+      "longitude": -79.6441,
+      "timezone": "America/Toronto"
+    },
+    {
+      "id": "markham-ca",
+      "name": "Markham",
+      "region": "Ontario",
+      "country": "CA",
+      "latitude": 43.8561,
+      "longitude": -79.337,
+      "timezone": "America/Toronto"
+    },
+    {
+      "id": "ottawa-ca",
+      "name": "Ottawa",
+      "region": "Ontario",
+      "country": "CA",
+      "latitude": 45.4215,
+      "longitude": -75.6972,
+      "timezone": "America/Toronto"
+    },
+    {
+      "id": "hamilton-ca",
+      "name": "Hamilton",
+      "region": "Ontario",
+      "country": "CA",
+      "latitude": 43.2557,
+      "longitude": -79.8711,
+      "timezone": "America/Toronto"
+    },
+    {
+      "id": "kitchener-ca",
+      "name": "Kitchener",
+      "region": "Ontario",
+      "country": "CA",
+      "latitude": 43.4516,
+      "longitude": -80.4925,
+      "timezone": "America/Toronto"
+    },
+    {
+      "id": "london-ca",
+      "name": "London",
+      "region": "Ontario",
+      "country": "CA",
+      "latitude": 42.9849,
+      "longitude": -81.2453,
+      "timezone": "America/Toronto"
+    },
+    {
+      "id": "windsor-ca",
+      "name": "Windsor",
+      "region": "Ontario",
+      "country": "CA",
+      "latitude": 42.3149,
+      "longitude": -83.0364,
+      "timezone": "America/Toronto"
+    },
+    {
+      "id": "oakville-ca",
+      "name": "Oakville",
+      "region": "Ontario",
+      "country": "CA",
+      "latitude": 43.4675,
+      "longitude": -79.6877,
+      "timezone": "America/Toronto"
+    },
+    {
+      "id": "vancouver-ca",
+      "name": "Vancouver",
+      "region": "British Columbia",
+      "country": "CA",
+      "latitude": 49.2827,
+      "longitude": -123.1207,
+      "timezone": "America/Vancouver"
+    },
+    {
+      "id": "surrey-ca",
+      "name": "Surrey",
+      "region": "British Columbia",
+      "country": "CA",
+      "latitude": 49.1913,
+      "longitude": -122.849,
+      "timezone": "America/Vancouver"
+    },
+    {
+      "id": "burnaby-ca",
+      "name": "Burnaby",
+      "region": "British Columbia",
+      "country": "CA",
+      "latitude": 49.2488,
+      "longitude": -122.9805,
+      "timezone": "America/Vancouver"
+    },
+    {
+      "id": "richmond-ca",
+      "name": "Richmond",
+      "region": "British Columbia",
+      "country": "CA",
+      "latitude": 49.1666,
+      "longitude": -123.1336,
+      "timezone": "America/Vancouver"
+    },
+    {
+      "id": "abbotsford-ca",
+      "name": "Abbotsford",
+      "region": "British Columbia",
+      "country": "CA",
+      "latitude": 49.0504,
+      "longitude": -122.3045,
+      "timezone": "America/Vancouver"
+    },
+    {
+      "id": "victoria-ca",
+      "name": "Victoria",
+      "region": "British Columbia",
+      "country": "CA",
+      "latitude": 48.4284,
+      "longitude": -123.3656,
+      "timezone": "America/Vancouver"
+    },
+    {
+      "id": "calgary-ca",
+      "name": "Calgary",
+      "region": "Alberta",
+      "country": "CA",
+      "latitude": 51.0447,
+      "longitude": -114.0719,
+      "timezone": "America/Edmonton"
+    },
+    {
+      "id": "edmonton-ca",
+      "name": "Edmonton",
+      "region": "Alberta",
+      "country": "CA",
+      "latitude": 53.5461,
+      "longitude": -113.4938,
+      "timezone": "America/Edmonton"
+    },
+    {
+      "id": "winnipeg-ca",
+      "name": "Winnipeg",
+      "region": "Manitoba",
+      "country": "CA",
+      "latitude": 49.8951,
+      "longitude": -97.1384,
+      "timezone": "America/Winnipeg"
+    },
+    {
+      "id": "regina-ca",
+      "name": "Regina",
+      "region": "Saskatchewan",
+      "country": "CA",
+      "latitude": 50.4452,
+      "longitude": -104.6189,
+      "timezone": "America/Regina"
+    },
+    {
+      "id": "saskatoon-ca",
+      "name": "Saskatoon",
+      "region": "Saskatchewan",
+      "country": "CA",
+      "latitude": 52.1332,
+      "longitude": -106.67,
+      "timezone": "America/Regina"
+    },
+    {
+      "id": "halifax-ca",
+      "name": "Halifax",
+      "region": "Nova Scotia",
+      "country": "CA",
+      "latitude": 44.6488,
+      "longitude": -63.5752,
+      "timezone": "America/Halifax"
+    },
+    {
+      "id": "moncton-ca",
+      "name": "Moncton",
+      "region": "New Brunswick",
+      "country": "CA",
+      "latitude": 46.0878,
+      "longitude": -64.7782,
+      "timezone": "America/Moncton"
+    },
+    {
+      "id": "st-john-s-ca",
+      "name": "St. John's",
+      "region": "Newfoundland and Labrador",
+      "country": "CA",
+      "latitude": 47.5615,
+      "longitude": -52.7126,
+      "timezone": "America/St_Johns"
+    },
+    {
+      "id": "new-york-us",
+      "name": "New York",
+      "region": "New York",
+      "country": "US",
+      "latitude": 40.7128,
+      "longitude": -74.006,
+      "timezone": "America/New_York"
+    },
+    {
+      "id": "edison-us",
+      "name": "Edison",
+      "region": "New Jersey",
+      "country": "US",
+      "latitude": 40.5187,
+      "longitude": -74.4121,
+      "timezone": "America/New_York"
+    },
+    {
+      "id": "jersey-city-us",
+      "name": "Jersey City",
+      "region": "New Jersey",
+      "country": "US",
+      "latitude": 40.7178,
+      "longitude": -74.0431,
+      "timezone": "America/New_York"
+    },
+    {
+      "id": "boston-us",
+      "name": "Boston",
+      "region": "Massachusetts",
+      "country": "US",
+      "latitude": 42.3601,
+      "longitude": -71.0589,
+      "timezone": "America/New_York"
+    },
+    {
+      "id": "philadelphia-us",
+      "name": "Philadelphia",
+      "region": "Pennsylvania",
+      "country": "US",
+      "latitude": 39.9526,
+      "longitude": -75.1652,
+      "timezone": "America/New_York"
+    },
+    {
+      "id": "pittsburgh-us",
+      "name": "Pittsburgh",
+      "region": "Pennsylvania",
+      "country": "US",
+      "latitude": 40.4406,
+      "longitude": -79.9959,
+      "timezone": "America/New_York"
+    },
+    {
+      "id": "washington-us",
+      "name": "Washington",
+      "region": "District of Columbia",
+      "country": "US",
+      "latitude": 38.9072,
+      "longitude": -77.0369,
+      "timezone": "America/New_York"
+    },
+    {
+      "id": "atlanta-us",
+      "name": "Atlanta",
+      "region": "Georgia",
+      "country": "US",
+      "latitude": 33.749,
+      "longitude": -84.388,
+      "timezone": "America/New_York"
+    },
+    {
+      "id": "charlotte-us",
+      "name": "Charlotte",
+      "region": "North Carolina",
+      "country": "US",
+      "latitude": 35.2271,
+      "longitude": -80.8431,
+      "timezone": "America/New_York"
+    },
+    {
+      "id": "raleigh-us",
+      "name": "Raleigh",
+      "region": "North Carolina",
+      "country": "US",
+      "latitude": 35.7796,
+      "longitude": -78.6382,
+      "timezone": "America/New_York"
+    },
+    {
+      "id": "orlando-us",
+      "name": "Orlando",
+      "region": "Florida",
+      "country": "US",
+      "latitude": 28.5384,
+      "longitude": -81.3789,
+      "timezone": "America/New_York"
+    },
+    {
+      "id": "tampa-us",
+      "name": "Tampa",
+      "region": "Florida",
+      "country": "US",
+      "latitude": 27.9506,
+      "longitude": -82.4572,
+      "timezone": "America/New_York"
+    },
+    {
+      "id": "miami-us",
+      "name": "Miami",
+      "region": "Florida",
+      "country": "US",
+      "latitude": 25.7617,
+      "longitude": -80.1918,
+      "timezone": "America/New_York"
+    },
+    {
+      "id": "detroit-us",
+      "name": "Detroit",
+      "region": "Michigan",
+      "country": "US",
+      "latitude": 42.3314,
+      "longitude": -83.0458,
+      "timezone": "America/Detroit"
+    },
+    {
+      "id": "columbus-us",
+      "name": "Columbus",
+      "region": "Ohio",
+      "country": "US",
+      "latitude": 39.9612,
+      "longitude": -82.9988,
+      "timezone": "America/New_York"
+    },
+    {
+      "id": "chicago-us",
+      "name": "Chicago",
+      "region": "Illinois",
+      "country": "US",
+      "latitude": 41.8781,
+      "longitude": -87.6298,
+      "timezone": "America/Chicago"
+    },
+    {
+      "id": "minneapolis-us",
+      "name": "Minneapolis",
+      "region": "Minnesota",
+      "country": "US",
+      "latitude": 44.9778,
+      "longitude": -93.265,
+      "timezone": "America/Chicago"
+    },
+    {
+      "id": "houston-us",
+      "name": "Houston",
+      "region": "Texas",
+      "country": "US",
+      "latitude": 29.7604,
+      "longitude": -95.3698,
+      "timezone": "America/Chicago"
+    },
+    {
+      "id": "dallas-us",
+      "name": "Dallas",
+      "region": "Texas",
+      "country": "US",
+      "latitude": 32.7767,
+      "longitude": -96.797,
+      "timezone": "America/Chicago"
+    },
+    {
+      "id": "austin-us",
+      "name": "Austin",
+      "region": "Texas",
+      "country": "US",
+      "latitude": 30.2672,
+      "longitude": -97.7431,
+      "timezone": "America/Chicago"
+    },
+    {
+      "id": "denver-us",
+      "name": "Denver",
+      "region": "Colorado",
+      "country": "US",
+      "latitude": 39.7392,
+      "longitude": -104.9903,
+      "timezone": "America/Denver"
+    },
+    {
+      "id": "phoenix-us",
+      "name": "Phoenix",
+      "region": "Arizona",
+      "country": "US",
+      "latitude": 33.4484,
+      "longitude": -112.074,
+      "timezone": "America/Phoenix"
+    },
+    {
+      "id": "las-vegas-us",
+      "name": "Las Vegas",
+      "region": "Nevada",
+      "country": "US",
+      "latitude": 36.1699,
+      "longitude": -115.1398,
+      "timezone": "America/Los_Angeles"
+    },
+    {
+      "id": "los-angeles-us",
+      "name": "Los Angeles",
+      "region": "California",
+      "country": "US",
+      "latitude": 34.0522,
+      "longitude": -118.2437,
+      "timezone": "America/Los_Angeles"
+    },
+    {
+      "id": "san-diego-us",
+      "name": "San Diego",
+      "region": "California",
+      "country": "US",
+      "latitude": 32.7157,
+      "longitude": -117.1611,
+      "timezone": "America/Los_Angeles"
+    },
+    {
+      "id": "san-francisco-us",
+      "name": "San Francisco",
+      "region": "California",
+      "country": "US",
+      "latitude": 37.7749,
+      "longitude": -122.4194,
+      "timezone": "America/Los_Angeles"
+    },
+    {
+      "id": "san-jose-us",
+      "name": "San Jose",
+      "region": "California",
+      "country": "US",
+      "latitude": 37.3382,
+      "longitude": -121.8863,
+      "timezone": "America/Los_Angeles"
+    },
+    {
+      "id": "fremont-us",
+      "name": "Fremont",
+      "region": "California",
+      "country": "US",
+      "latitude": 37.5485,
+      "longitude": -121.9886,
+      "timezone": "America/Los_Angeles"
+    },
+    {
+      "id": "sacramento-us",
+      "name": "Sacramento",
+      "region": "California",
+      "country": "US",
+      "latitude": 38.5816,
+      "longitude": -121.4944,
+      "timezone": "America/Los_Angeles"
+    },
+    {
+      "id": "seattle-us",
+      "name": "Seattle",
+      "region": "Washington",
+      "country": "US",
+      "latitude": 47.6062,
+      "longitude": -122.3321,
+      "timezone": "America/Los_Angeles"
+    },
+    {
+      "id": "portland-us",
+      "name": "Portland",
+      "region": "Oregon",
+      "country": "US",
+      "latitude": 45.5152,
+      "longitude": -122.6784,
+      "timezone": "America/Los_Angeles"
+    },
+    {
+      "id": "anchorage-us",
+      "name": "Anchorage",
+      "region": "Alaska",
+      "country": "US",
+      "latitude": 61.2181,
+      "longitude": -149.9003,
+      "timezone": "America/Anchorage"
+    },
+    {
+      "id": "honolulu-us",
+      "name": "Honolulu",
+      "region": "Hawaii",
+      "country": "US",
+      "latitude": 21.3069,
+      "longitude": -157.8583,
+      "timezone": "Pacific/Honolulu"
+    },
+    {
+      "id": "london-gb",
+      "name": "London",
+      "region": "England",
+      "country": "GB",
+      "latitude": 51.5074,
+      "longitude": -0.1278,
+      "timezone": "Europe/London"
+    },
+    {
+      "id": "leicester-gb",
+      "name": "Leicester",
+      "region": "England",
+      "country": "GB",
+      "latitude": 52.6369,
+      "longitude": -1.1398,
+      "timezone": "Europe/London"
+    },
+    {
+      "id": "birmingham-gb",
+      "name": "Birmingham",
+      "region": "England",
+      "country": "GB",
+      "latitude": 52.4862,
+      "longitude": -1.8904,
+      "timezone": "Europe/London"
+    },
+    {
+      "id": "manchester-gb",
+      "name": "Manchester",
+      "region": "England",
+      "country": "GB",
+      "latitude": 53.4808,
+      "longitude": -2.2426,
+      "timezone": "Europe/London"
+    },
+    {
+      "id": "leeds-gb",
+      "name": "Leeds",
+      "region": "England",
+      "country": "GB",
+      "latitude": 53.8008,
+      "longitude": -1.5491,
+      "timezone": "Europe/London"
+    },
+    {
+      "id": "bradford-gb",
+      "name": "Bradford",
+      "region": "England",
+      "country": "GB",
+      "latitude": 53.796,
+      "longitude": -1.7594,
+      "timezone": "Europe/London"
+    },
+    {
+      "id": "coventry-gb",
+      "name": "Coventry",
+      "region": "England",
+      "country": "GB",
+      "latitude": 52.4068,
+      "longitude": -1.5197,
+      "timezone": "Europe/London"
+    },
+    {
+      "id": "slough-gb",
+      "name": "Slough",
+      "region": "England",
+      "country": "GB",
+      "latitude": 51.5105,
+      "longitude": -0.595,
+      "timezone": "Europe/London"
+    },
+    {
+      "id": "glasgow-gb",
+      "name": "Glasgow",
+      "region": "Scotland",
+      "country": "GB",
+      "latitude": 55.8642,
+      "longitude": -4.2518,
+      "timezone": "Europe/London"
+    },
+    {
+      "id": "edinburgh-gb",
+      "name": "Edinburgh",
+      "region": "Scotland",
+      "country": "GB",
+      "latitude": 55.9533,
+      "longitude": -3.1883,
+      "timezone": "Europe/London"
+    },
+    {
+      "id": "cardiff-gb",
+      "name": "Cardiff",
+      "region": "Wales",
+      "country": "GB",
+      "latitude": 51.4816,
+      "longitude": -3.1791,
+      "timezone": "Europe/London"
+    },
+    {
+      "id": "new-delhi-in",
+      "name": "New Delhi",
+      "region": "Delhi",
+      "country": "IN",
+      "latitude": 28.6139,
+      "longitude": 77.209,
+      "timezone": "Asia/Kolkata"
+    },
+    {
+      "id": "mumbai-in",
+      "name": "Mumbai",
+      "region": "Maharashtra",
+      "country": "IN",
+      "latitude": 19.076,
+      "longitude": 72.8777,
+      "timezone": "Asia/Kolkata"
+    },
+    {
+      "id": "pune-in",
+      "name": "Pune",
+      "region": "Maharashtra",
+      "country": "IN",
+      "latitude": 18.5204,
+      "longitude": 73.8567,
+      "timezone": "Asia/Kolkata"
+    },
+    {
+      "id": "nashik-in",
+      "name": "Nashik",
+      "region": "Maharashtra",
+      "country": "IN",
+      "latitude": 19.9975,
+      "longitude": 73.7898,
+      "timezone": "Asia/Kolkata"
+    },
+    {
+      "id": "kolkata-in",
+      "name": "Kolkata",
+      "region": "West Bengal",
+      "country": "IN",
+      "latitude": 22.5726,
+      "longitude": 88.3639,
+      "timezone": "Asia/Kolkata"
+    },
+    {
+      "id": "chennai-in",
+      "name": "Chennai",
+      "region": "Tamil Nadu",
+      "country": "IN",
+      "latitude": 13.0827,
+      "longitude": 80.2707,
+      "timezone": "Asia/Kolkata"
+    },
+    {
+      "id": "madurai-in",
+      "name": "Madurai",
+      "region": "Tamil Nadu",
+      "country": "IN",
+      "latitude": 9.9252,
+      "longitude": 78.1198,
+      "timezone": "Asia/Kolkata"
+    },
+    {
+      "id": "bengaluru-in",
+      "name": "Bengaluru",
+      "region": "Karnataka",
+      "country": "IN",
+      "latitude": 12.9716,
+      "longitude": 77.5946,
+      "timezone": "Asia/Kolkata"
+    },
+    {
+      "id": "hyderabad-in",
+      "name": "Hyderabad",
+      "region": "Telangana",
+      "country": "IN",
+      "latitude": 17.385,
+      "longitude": 78.4867,
+      "timezone": "Asia/Kolkata"
+    },
+    {
+      "id": "tirupati-in",
+      "name": "Tirupati",
+      "region": "Andhra Pradesh",
+      "country": "IN",
+      "latitude": 13.6288,
+      "longitude": 79.4192,
+      "timezone": "Asia/Kolkata"
+    },
+    {
+      "id": "ahmedabad-in",
+      "name": "Ahmedabad",
+      "region": "Gujarat",
+      "country": "IN",
+      "latitude": 23.0225,
+      "longitude": 72.5714,
+      "timezone": "Asia/Kolkata"
+    },
+    {
+      "id": "surat-in",
+      "name": "Surat",
+      "region": "Gujarat",
+      "country": "IN",
+      "latitude": 21.1702,
+      "longitude": 72.8311,
+      "timezone": "Asia/Kolkata"
+    },
+    {
+      "id": "vadodara-in",
+      "name": "Vadodara",
+      "region": "Gujarat",
+      "country": "IN",
+      "latitude": 22.3072,
+      "longitude": 73.1812,
+      "timezone": "Asia/Kolkata"
+    },
+    {
+      "id": "jaipur-in",
+      "name": "Jaipur",
+      "region": "Rajasthan",
+      "country": "IN",
+      "latitude": 26.9124,
+      "longitude": 75.7873,
+      "timezone": "Asia/Kolkata"
+    },
+    {
+      "id": "lucknow-in",
+      "name": "Lucknow",
+      "region": "Uttar Pradesh",
+      "country": "IN",
+      "latitude": 26.8467,
+      "longitude": 80.9462,
+      "timezone": "Asia/Kolkata"
+    },
+    {
+      "id": "varanasi-in",
+      "name": "Varanasi",
+      "region": "Uttar Pradesh",
+      "country": "IN",
+      "latitude": 25.3176,
+      "longitude": 82.9739,
+      "timezone": "Asia/Kolkata"
+    },
+    {
+      "id": "prayagraj-in",
+      "name": "Prayagraj",
+      "region": "Uttar Pradesh",
+      "country": "IN",
+      "latitude": 25.4358,
+      "longitude": 81.8463,
+      "timezone": "Asia/Kolkata"
+    },
+    {
+      "id": "ayodhya-in",
+      "name": "Ayodhya",
+      "region": "Uttar Pradesh",
+      "country": "IN",
+      "latitude": 26.7922,
+      "longitude": 82.1998,
+      "timezone": "Asia/Kolkata"
+    },
+    {
+      "id": "mathura-in",
+      "name": "Mathura",
+      "region": "Uttar Pradesh",
+      "country": "IN",
+      "latitude": 27.4924,
+      "longitude": 77.6737,
+      "timezone": "Asia/Kolkata"
+    },
+    {
+      "id": "haridwar-in",
+      "name": "Haridwar",
+      "region": "Uttarakhand",
+      "country": "IN",
+      "latitude": 29.9457,
+      "longitude": 78.1642,
+      "timezone": "Asia/Kolkata"
+    },
+    {
+      "id": "ujjain-in",
+      "name": "Ujjain",
+      "region": "Madhya Pradesh",
+      "country": "IN",
+      "latitude": 23.1765,
+      "longitude": 75.7885,
+      "timezone": "Asia/Kolkata"
+    },
+    {
+      "id": "bhopal-in",
+      "name": "Bhopal",
+      "region": "Madhya Pradesh",
+      "country": "IN",
+      "latitude": 23.2599,
+      "longitude": 77.4126,
+      "timezone": "Asia/Kolkata"
+    },
+    {
+      "id": "indore-in",
+      "name": "Indore",
+      "region": "Madhya Pradesh",
+      "country": "IN",
+      "latitude": 22.7196,
+      "longitude": 75.8577,
+      "timezone": "Asia/Kolkata"
+    },
+    {
+      "id": "patna-in",
+      "name": "Patna",
+      "region": "Bihar",
+      "country": "IN",
+      "latitude": 25.5941,
+      "longitude": 85.1376,
+      "timezone": "Asia/Kolkata"
+    },
+    {
+      "id": "chandigarh-in",
+      "name": "Chandigarh",
+      "region": "Chandigarh",
+      "country": "IN",
+      "latitude": 30.7333,
+      "longitude": 76.7794,
+      "timezone": "Asia/Kolkata"
+    },
+    {
+      "id": "amritsar-in",
+      "name": "Amritsar",
+      "region": "Punjab",
+      "country": "IN",
+      "latitude": 31.634,
+      "longitude": 74.8723,
+      "timezone": "Asia/Kolkata"
+    },
+    {
+      "id": "guwahati-in",
+      "name": "Guwahati",
+      "region": "Assam",
+      "country": "IN",
+      "latitude": 26.1445,
+      "longitude": 91.7362,
+      "timezone": "Asia/Kolkata"
+    },
+    {
+      "id": "bhubaneswar-in",
+      "name": "Bhubaneswar",
+      "region": "Odisha",
+      "country": "IN",
+      "latitude": 20.2961,
+      "longitude": 85.8245,
+      "timezone": "Asia/Kolkata"
+    },
+    {
+      "id": "thiruvananthapuram-in",
+      "name": "Thiruvananthapuram",
+      "region": "Kerala",
+      "country": "IN",
+      "latitude": 8.5241,
+      "longitude": 76.9366,
+      "timezone": "Asia/Kolkata"
+    },
+    {
+      "id": "kochi-in",
+      "name": "Kochi",
+      "region": "Kerala",
+      "country": "IN",
+      "latitude": 9.9312,
+      "longitude": 76.2673,
+      "timezone": "Asia/Kolkata"
+    },
+    {
+      "id": "kathmandu-np",
+      "name": "Kathmandu",
+      "region": "Bagmati",
+      "country": "NP",
+      "latitude": 27.7172,
+      "longitude": 85.324,
+      "timezone": "Asia/Kathmandu"
+    },
+    {
+      "id": "singapore-sg",
+      "name": "Singapore",
+      "region": "Singapore",
+      "country": "SG",
+      "latitude": 1.3521,
+      "longitude": 103.8198,
+      "timezone": "Asia/Singapore"
+    },
+    {
+      "id": "kuala-lumpur-my",
+      "name": "Kuala Lumpur",
+      "region": "Federal Territory",
+      "country": "MY",
+      "latitude": 3.139,
+      "longitude": 101.6869,
+      "timezone": "Asia/Kuala_Lumpur"
+    },
+    {
+      "id": "dubai-ae",
+      "name": "Dubai",
+      "region": "Dubai",
+      "country": "AE",
+      "latitude": 25.2048,
+      "longitude": 55.2708,
+      "timezone": "Asia/Dubai"
+    },
+    {
+      "id": "sydney-au",
+      "name": "Sydney",
+      "region": "New South Wales",
+      "country": "AU",
+      "latitude": -33.8688,
+      "longitude": 151.2093,
+      "timezone": "Australia/Sydney"
+    },
+    {
+      "id": "melbourne-au",
+      "name": "Melbourne",
+      "region": "Victoria",
+      "country": "AU",
+      "latitude": -37.8136,
+      "longitude": 144.9631,
+      "timezone": "Australia/Melbourne"
+    },
+    {
+      "id": "auckland-nz",
+      "name": "Auckland",
+      "region": "Auckland",
+      "country": "NZ",
+      "latitude": -36.8485,
+      "longitude": 174.7633,
+      "timezone": "Pacific/Auckland"
+    },
+    {
+      "id": "johannesburg-za",
+      "name": "Johannesburg",
+      "region": "Gauteng",
+      "country": "ZA",
+      "latitude": -26.2041,
+      "longitude": 28.0473,
+      "timezone": "Africa/Johannesburg"
+    },
+    {
+      "id": "durban-za",
+      "name": "Durban",
+      "region": "KwaZulu-Natal",
+      "country": "ZA",
+      "latitude": -29.8587,
+      "longitude": 31.0218,
+      "timezone": "Africa/Johannesburg"
+    },
+    {
+      "id": "nairobi-ke",
+      "name": "Nairobi",
+      "region": "Nairobi",
+      "country": "KE",
+      "latitude": -1.2921,
+      "longitude": 36.8219,
+      "timezone": "Africa/Nairobi"
+    },
+    {
+      "id": "port-louis-mu",
+      "name": "Port Louis",
+      "region": "Port Louis",
+      "country": "MU",
+      "latitude": -20.1609,
+      "longitude": 57.5012,
+      "timezone": "Indian/Mauritius"
+    },
+    {
+      "id": "port-of-spain-tt",
+      "name": "Port of Spain",
+      "region": "Port of Spain",
+      "country": "TT",
+      "latitude": 10.6549,
+      "longitude": -61.5019,
+      "timezone": "America/Port_of_Spain"
+    },
+    {
+      "id": "georgetown-gy",
+      "name": "Georgetown",
+      "region": "Demerara-Mahaica",
+      "country": "GY",
+      "latitude": 6.8013,
+      "longitude": -58.1551,
+      "timezone": "America/Guyana"
+    },
+    {
+      "id": "paramaribo-sr",
+      "name": "Paramaribo",
+      "region": "Paramaribo",
+      "country": "SR",
+      "latitude": 5.852,
+      "longitude": -55.2038,
+      "timezone": "America/Paramaribo"
+    },
+    {
+      "id": "suva-fj",
+      "name": "Suva",
+      "region": "Central",
+      "country": "FJ",
+      "latitude": -18.1248,
+      "longitude": 178.4501,
+      "timezone": "Pacific/Fiji"
+    }
+  ]
+}

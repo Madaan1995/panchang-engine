@@ -1,0 +1,155 @@
+import { describe, expect, it } from 'vitest';
+import fc from 'fast-check';
+import { CHOGHADIYA, choghadiyaSchema, DAY_TIMINGS, dayTimingsSchema } from '@/core/data';
+import { dayPeriod, dayTimings, splitEqually } from '@/core/dayTimings';
+import { sunTimes } from '@/core/riseSet';
+import { cityArb, recentLocalDateArb } from './helpers/arbitraries';
+import choghadiyaJson from '../data/choghadiya.json';
+import dayTimingsJson from '../data/day-timings.json';
+
+describe('day-timings data file (structural checks; values UNVERIFIED)', () => {
+  it('validates against its schema and carries an UNVERIFIED header and provenance', () => {
+    expect(() => dayTimingsSchema.parse(dayTimingsJson)).not.toThrow();
+    expect(DAY_TIMINGS.header.startsWith('UNVERIFIED')).toBe(true);
+    expect(DAY_TIMINGS.provenance).toBeDefined();
+  });
+
+  it('on any weekday, Rahu Kaal, Yamaganda and Gulika occupy three different eighths of the day', () => {
+    for (let w = 0; w < 7; w++) {
+      const p = DAY_TIMINGS.periods;
+      const s = new Set([p.rahuKaal.segmentByWeekday[w], p.yamaganda.segmentByWeekday[w], p.gulika.segmentByWeekday[w]]);
+      expect(s.size).toBe(3);
+    }
+  });
+});
+
+describe('Rahu Kaal / Yamaganda / Gulika (mathematical checks)', () => {
+  it('splitEqually produces equal, contiguous parts', () => {
+    const parts = splitEqually(new Date(0), new Date(8000), 8);
+    expect(parts).toHaveLength(8);
+    parts.forEach((p, i) => {
+      expect(p.start.getTime()).toBe(i * 1000);
+      expect(p.end.getTime()).toBe((i + 1) * 1000);
+    });
+  });
+
+  it('each period is exactly the table-specified eighth of sunrise→sunset', () => {
+    fc.assert(
+      fc.property(recentLocalDateArb, cityArb, (date, city) => {
+        const t = dayTimings(date, city);
+        const { sunrise, sunset } = sunTimes(date, city);
+        const eighth = (sunset.getTime() - sunrise.getTime()) / 8;
+        return (['rahuKaal', 'yamaganda', 'gulika'] as const).every((key) => {
+          const seg = DAY_TIMINGS.periods[key].segmentByWeekday[t.weekday]!;
+          const p = t[key];
+          return (
+            Math.abs(p.start.getTime() - (sunrise.getTime() + (seg - 1) * eighth)) <= 1 &&
+            Math.abs(p.end.getTime() - p.start.getTime() - eighth) <= 1
+          );
+        });
+      }),
+      { numRuns: 50 },
+    );
+  });
+
+  it('uses the table entry for the vara of the panchang day', () => {
+    // 2026-11-08 is a Sunday; Sunday's Rahu Kaal is the table's entry 0.
+    const sunrise = new Date(Date.UTC(2026, 10, 8, 12));
+    const sunset = new Date(Date.UTC(2026, 10, 8, 20));
+    const p = dayPeriod('rahuKaal', sunrise, sunset, 0);
+    const seg = DAY_TIMINGS.periods.rahuKaal.segmentByWeekday[0]!;
+    expect(p.start.getTime()).toBe(sunrise.getTime() + (seg - 1) * 3_600_000);
+  });
+});
+
+describe('Abhijit muhurat and Brahma muhurta (mathematical checks of the spec definitions)', () => {
+  it('Abhijit is the 8th of 15 equal day-muhurtas, so it is centred on the midpoint of sunrise and sunset', () => {
+    fc.assert(
+      fc.property(recentLocalDateArb, cityArb, (date, city) => {
+        const t = dayTimings(date, city);
+        const muhurta = (t.sunset.getTime() - t.sunrise.getTime()) / 15;
+        const mid = (t.sunrise.getTime() + t.sunset.getTime()) / 2;
+        return (
+          Math.abs(t.abhijit.start.getTime() - (t.sunrise.getTime() + 7 * muhurta)) <= 1 &&
+          Math.abs(t.abhijit.end.getTime() - t.abhijit.start.getTime() - muhurta) <= 1 &&
+          Math.abs((t.abhijit.start.getTime() + t.abhijit.end.getTime()) / 2 - mid) <= 1
+        );
+      }),
+      { numRuns: 50 },
+    );
+  });
+
+  it('Brahma muhurta is the 2 night-muhurtas (night/15 each) ending exactly at sunrise', () => {
+    fc.assert(
+      fc.property(recentLocalDateArb, cityArb, (date, city) => {
+        const t = dayTimings(date, city);
+        const nightMuhurta = (t.sunrise.getTime() - t.previousSunset.getTime()) / 15;
+        return (
+          t.brahmaMuhurta.end.getTime() === t.sunrise.getTime() &&
+          Math.abs(t.brahmaMuhurta.end.getTime() - t.brahmaMuhurta.start.getTime() - 2 * nightMuhurta) <= 1
+        );
+      }),
+      { numRuns: 50 },
+    );
+  });
+
+  it('previous sunset < sunrise < sunset < next sunrise', () => {
+    fc.assert(
+      fc.property(recentLocalDateArb, cityArb, (date, city) => {
+        const t = dayTimings(date, city);
+        return t.previousSunset < t.sunrise && t.sunrise < t.sunset && t.sunset < t.nextSunrise;
+      }),
+      { numRuns: 50 },
+    );
+  });
+});
+
+describe('choghadiya data table (structural checks; sequences UNVERIFIED)', () => {
+  it('validates against its schema with an UNVERIFIED header', () => {
+    expect(() => choghadiyaSchema.parse(choghadiyaJson)).not.toThrow();
+    expect(CHOGHADIYA.header.startsWith('UNVERIFIED')).toBe(true);
+  });
+
+  it('each day and night sequence ends with the choghadiya it starts with and contains all 7 kinds', () => {
+    for (const period of ['day', 'night'] as const) {
+      for (const seq of CHOGHADIYA[period]) {
+        expect(seq[7]).toBe(seq[0]);
+        expect(new Set(seq.slice(0, 7)).size).toBe(7);
+      }
+    }
+  });
+
+  it('day sequences are rotations of one cycle, and so are night sequences', () => {
+    for (const period of ['day', 'night'] as const) {
+      const cycle = CHOGHADIYA[period][0]!.slice(0, 7);
+      for (const seq of CHOGHADIYA[period]) {
+        const offset = cycle.indexOf(seq[0]!);
+        seq.slice(0, 7).forEach((k, i) => expect(k).toBe(cycle[(offset + i) % 7]));
+      }
+    }
+  });
+});
+
+describe('choghadiya timings (mathematical checks)', () => {
+  it('8 equal day segments from sunrise to sunset and 8 equal night segments from sunset to next sunrise', () => {
+    fc.assert(
+      fc.property(recentLocalDateArb, cityArb, (date, city) => {
+        const t = dayTimings(date, city);
+        const { day, night } = t.choghadiya;
+        const dayLen = (t.sunset.getTime() - t.sunrise.getTime()) / 8;
+        const nightLen = (t.nextSunrise.getTime() - t.sunset.getTime()) / 8;
+        return (
+          day.length === 8 &&
+          night.length === 8 &&
+          day[0]!.start.getTime() === t.sunrise.getTime() &&
+          Math.abs(day[7]!.end.getTime() - t.sunset.getTime()) <= 1 &&
+          night[0]!.start.getTime() === t.sunset.getTime() &&
+          Math.abs(night[7]!.end.getTime() - t.nextSunrise.getTime()) <= 1 &&
+          day.every((s, i) => Math.abs(s.end.getTime() - s.start.getTime() - dayLen) <= 1 && s.key === CHOGHADIYA.day[t.weekday]![i]) &&
+          night.every((s, i) => Math.abs(s.end.getTime() - s.start.getTime() - nightLen) <= 1 && s.key === CHOGHADIYA.night[t.weekday]![i])
+        );
+      }),
+      { numRuns: 50 },
+    );
+  });
+});

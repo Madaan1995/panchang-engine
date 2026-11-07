@@ -1,0 +1,27 @@
+{
+  "source": "",
+  "checkedBy": "",
+  "dateChecked": "",
+  "city": "montreal-ca",
+  "monthSystem": "purnimanta",
+  "toleranceMinutes": 2,
+  "entries": [
+    {
+      "date": "2026-01-01",
+      "verified": false,
+      "expected": {
+        "sunrise": "",
+        "sunset": "",
+        "tithiAtSunrise": "",
+        "tithiEnd": "",
+        "nakshatraAtSunrise": "",
+        "nakshatraEnd": "",
+        "yogaAtSunrise": "",
+        "karanaAtSunrise": "",
+        "rahuKaalStart": "",
+        "rahuKaalEnd": "",
+        "lunarMonth": ""
+      }
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "header": "UNVERIFIED — festival rules must be reviewed by a priest. Dates computed from these rules are NOT authoritative.",
+  "description": "Festival rules. 'month' is the AMANTA lunar month name (new moon to new moon). 'tithi' is the number within the paksha, 1..15 (Shukla 15 = Purnima, Krishna 15 = Amavasya). 'observance' names a window in observance-windows.json. Festivals are matched only in nija (non-adhik) months.",
+  "monthSystem": "amanta",
+  "festivals": [
+    {
+      "id": "diwali-lakshmi-puja",
+      "name": { "en": "Diwali (Lakshmi Puja)", "sa": "दीपावली (लक्ष्मी पूजा)" },
+      "month": "Ashvin",
+      "paksha": "krishna",
+      "tithi": 15,
+      "observance": "tithi_during_pradosh",
+      "regionNotes": "Amavasya of amanta Ashvin = Amavasya of purnimanta Kartika. Lakshmi Puja is performed during Pradosh while Amavasya prevails.",
+      "provenance": { "verifiedBy": "", "source": "", "dateVerified": "", "notes": "" }
+    },
+    {
+      "id": "janmashtami",
+      "name": { "en": "Krishna Janmashtami", "sa": "कृष्ण जन्माष्टमी" },
+      "month": "Shravana",
+      "paksha": "krishna",
+      "tithi": 8,
+      "observance": "tithi_at_midnight",
+      "regionNotes": "Amanta Shravana Krishna Ashtami = purnimanta Bhadrapada Krishna Ashtami. Smarta and Vaishnava (ISKCON) observances can differ by a day; Rohini nakshatra is also considered by some traditions. Not modelled.",
+      "provenance": { "verifiedBy": "", "source": "", "dateVerified": "", "notes": "" }
+    },
+    {
+      "id": "ram-navami",
+      "name": { "en": "Ram Navami", "sa": "राम नवमी" },
+      "month": "Chaitra",
+      "paksha": "shukla",
+      "tithi": 9,
+      "observance": "tithi_at_sunrise",
+      "regionNotes": "Traditionally decided by Navami prevailing at Madhyahna (midday). The spec's rule set has no madhyahna rule, so sunrise is used; review.",
+      "provenance": { "verifiedBy": "", "source": "", "dateVerified": "", "notes": "" }
+    },
+    {
+      "id": "maha-shivaratri",
+      "name": { "en": "Maha Shivaratri", "sa": "महाशिवरात्रि" },
+      "month": "Magha",
+      "paksha": "krishna",
+      "tithi": 14,
+      "observance": "tithi_at_midnight",
+      "regionNotes": "Amanta Magha Krishna Chaturdashi = purnimanta Phalguna Krishna Chaturdashi. Decided by Chaturdashi prevailing at Nishita kaal.",
+      "provenance": { "verifiedBy": "", "source": "", "dateVerified": "", "notes": "" }
+    },
+    {
+      "id": "holika-dahan",
+      "name": { "en": "Holika Dahan", "sa": "होलिका दहन" },
+      "month": "Phalguna",
+      "paksha": "shukla",
+      "tithi": 15,
+      "observance": "tithi_during_pradosh",
+      "regionNotes": "Phalguna Purnima during Pradosh. Traditional rules also avoid Bhadra (Vishti karana); not modelled. Holi (colours) is the following day.",
+      "provenance": { "verifiedBy": "", "source": "", "dateVerified": "", "notes": "" }
+    },
+    {
+      "id": "sharad-navratri-start",
+      "name": { "en": "Sharad Navratri begins (Ghatasthapana)", "sa": "शारदीय नवरात्रि प्रारम्भ (घटस्थापना)" },
+      "month": "Ashvin",
+      "paksha": "shukla",
+      "tithi": 1,
+      "observance": "tithi_at_sunrise",
+      "regionNotes": "Ashvin Shukla Pratipada. Ghatasthapana muhurat is usually in the morning while Pratipada prevails.",
+      "provenance": { "verifiedBy": "", "source": "", "dateVerified": "", "notes": "" }
+    },
+    {
+      "id": "dussehra",
+      "name": { "en": "Dussehra (Vijayadashami)", "sa": "विजयदशमी (दशहरा)" },
+      "month": "Ashvin",
+      "paksha": "shukla",
+      "tithi": 10,
+      "observance": "tithi_during_aparahna",
+      "regionNotes": "Ashvin Shukla Dashami during Aparahna. Shravana nakshatra is also considered by some traditions; not modelled.",
+      "provenance": { "verifiedBy": "", "source": "", "dateVerified": "", "notes": "" }
+    },
+    {
+      "id": "karva-chauth",
+      "name": { "en": "Karva Chauth", "sa": "करवा चौथ" },
+      "month": "Ashvin",
+      "paksha": "krishna",
+      "tithi": 4,
+      "observance": "tithi_during_pradosh",
+      "regionNotes": "Amanta Ashvin Krishna Chaturthi = purnimanta Kartika Krishna Chaturthi. Traditionally the Chaturthi should prevail at moonrise; Pradosh is used here as the nearest available rule; review.",
+      "provenance": { "verifiedBy": "", "source": "", "dateVerified": "", "notes": "" }
+    },
+    {
+      "id": "raksha-bandhan",
+      "name": { "en": "Raksha Bandhan", "sa": "रक्षाबन्धन" },
+      "month": "Shravana",
+      "paksha": "shukla",
+      "tithi": 15,
+      "observance": "tithi_during_aparahna",
+      "regionNotes": "Shravana Purnima, preferably during Aparahna and avoiding Bhadra (Vishti karana); Bhadra avoidance not modelled.",
+      "provenance": { "verifiedBy": "", "source": "", "dateVerified": "", "notes": "" }
+    },
+    {
+      "id": "ganesh-chaturthi",
+      "name": { "en": "Ganesh Chaturthi", "sa": "गणेश चतुर्थी" },
+      "month": "Bhadrapada",
+      "paksha": "shukla",
+      "tithi": 4,
+      "observance": "tithi_at_sunrise",
+      "regionNotes": "Bhadrapada Shukla Chaturthi. Traditionally decided by Chaturthi prevailing at Madhyahna (midday); the spec's rule set has no madhyahna rule, so sunrise is used; review.",
+      "provenance": { "verifiedBy": "", "source": "", "dateVerified": "", "notes": "" }
+    }
+  ]
+}

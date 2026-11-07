@@ -1,0 +1,60 @@
+{
+  "header": "UNVERIFIED — rules must be reviewed by a priest",
+  "ceremony": "mundan",
+  "name": {
+    "en": "Mundan (first haircut)",
+    "sa": "मुण्डन"
+  },
+  "provenance": {
+    "verifiedBy": "",
+    "source": "",
+    "dateVerified": "",
+    "notes": "Placeholder entered by the autonomous build from commonly published lists. Not verified. A priest must review every field."
+  },
+  "description": "A window qualifies when the tithi, nakshatra and weekday are all in the allowed lists and the time is not inside any excluded period or excluded karana. Tithis are numbers within each paksha (15 = Purnima in shukla, Amavasya in krishna). Weekday is the vara of the panchang day.",
+  "notes": "The child's age (odd years) and family traditions are not modelled.",
+  "timeOfDay": "day",
+  "minimumWindowMinutes": 15,
+  "allowedTithis": {
+    "shukla": [
+      2,
+      3,
+      5,
+      7,
+      10,
+      11,
+      13
+    ],
+    "krishna": []
+  },
+  "allowedNakshatras": [
+    "Ashwini",
+    "Mrigashira",
+    "Punarvasu",
+    "Pushya",
+    "Hasta",
+    "Chitra",
+    "Swati",
+    "Jyeshtha",
+    "Shravana",
+    "Dhanishtha",
+    "Shatabhisha",
+    "Revati"
+  ],
+  "allowedWeekdays": [
+    "Monday",
+    "Wednesday",
+    "Thursday",
+    "Friday"
+  ],
+  "excluded": {
+    "periods": [
+      "rahuKaal",
+      "yamaganda",
+      "gulika"
+    ],
+    "karanas": [
+      "Vishti"
+    ]
+  }
+}
