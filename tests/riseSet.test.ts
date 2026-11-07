@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import fc from 'fast-check';
 import { Body, Equator, Horizon } from 'astronomy-engine';
 import { DateTime } from 'luxon';
-import { NoSunriseSunsetError, observerFor, sunTimes } from '@/core/riseSet';
+import { moonTimes, NoSunriseSunsetError, observerFor, sunTimes } from '@/core/riseSet';
 import { InvalidInputError, localDayBounds } from '@/core/time';
 import type { GeoLocation } from '@/core/types';
 import { cityArb, localDateArb } from './helpers/arbitraries';
@@ -90,5 +90,44 @@ describe('sunTimes', () => {
   it('rejects an invalid timezone or date with InvalidInputError', () => {
     expect(() => sunTimes('2026-01-01', { ...MONTREAL, timezone: 'Mars/Olympus' })).toThrowError(InvalidInputError);
     expect(() => sunTimes('2026-13-01', MONTREAL)).toThrowError(InvalidInputError);
+  });
+});
+
+describe('moonTimes', () => {
+  it('cross-check (astronomy-engine Horizon): when present, moonrise/moonset put the upper limb on the horizon', () => {
+    fc.assert(
+      fc.property(localDateArb, cityArb, (date, city) => {
+        const { moonrise, moonset } = moonTimes(date, city);
+        const ok = (t: Date | null) => t === null || Math.abs(upperLimbAltitude(Body.Moon, t, city)) < 0.01;
+        return ok(moonrise) && ok(moonset);
+      }),
+      { numRuns: 100 },
+    );
+  });
+
+  it('property: returned times fall inside the local date', () => {
+    fc.assert(
+      fc.property(localDateArb, cityArb, (date, city) => {
+        const { moonrise, moonset } = moonTimes(date, city);
+        const { start, end } = localDayBounds(date, city.timezone);
+        const inside = (t: Date | null) => t === null || (t >= start && t < end);
+        return inside(moonrise) && inside(moonset);
+      }),
+      { numRuns: 100 },
+    );
+  });
+
+  it('property: over 31 consecutive days at least one day has no moonrise and one has no moonset (null, no throw)', () => {
+    let start = DateTime.fromISO('2026-01-01', { zone: 'UTC' });
+    let noRise = 0;
+    let noSet = 0;
+    for (let i = 0; i < 31; i++) {
+      const m = moonTimes(start.toISODate() as string, MONTREAL);
+      if (m.moonrise === null) noRise++;
+      if (m.moonset === null) noSet++;
+      start = start.plus({ days: 1 });
+    }
+    expect(noRise).toBeGreaterThanOrEqual(1);
+    expect(noSet).toBeGreaterThanOrEqual(1);
   });
 });

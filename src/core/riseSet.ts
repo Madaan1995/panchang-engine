@@ -45,6 +45,13 @@ export interface SunTimes {
   sunset: Date;
 }
 
+export interface MoonTimes {
+  /** null when the Moon does not rise during this local calendar date. */
+  moonrise: Date | null;
+  /** null when the Moon does not set during this local calendar date. */
+  moonset: Date | null;
+}
+
 export function observerFor(location: GeoLocation): Observer {
   return new Observer(location.latitude, location.longitude, location.elevationMeters ?? 0);
 }
@@ -86,4 +93,21 @@ function polarError(date: LocalDate, location: GeoLocation, start: Date, end: Da
   const midday = new Date((start.getTime() + end.getTime()) / 2);
   const condition: PolarCondition = sunAltitude(midday, location) > 0 ? 'MIDNIGHT_SUN' : 'POLAR_NIGHT';
   return new NoSunriseSunsetError(condition, date, location);
+}
+
+/**
+ * Moonrise and moonset during the local calendar date. Because the Moon rises
+ * ~50 minutes later each day, roughly once a month there is a date with no
+ * moonrise (and another with no moonset). Those return null; they never throw.
+ */
+export function moonTimes(date: LocalDate, location: GeoLocation): MoonTimes {
+  assertValidZone(location.timezone);
+  const observer = observerFor(location);
+  const { start, end } = localDayBounds(date, location.timezone);
+  const dayLengthDays = (end.getTime() - start.getTime()) / MS_PER_DAY;
+  const within = (t: { date: Date } | null) => (t !== null && t.date.getTime() < end.getTime() ? t.date : null);
+  return {
+    moonrise: within(SearchRiseSet(Body.Moon, observer, RISE, start, dayLengthDays)),
+    moonset: within(SearchRiseSet(Body.Moon, observer, SET, start, dayLengthDays)),
+  };
 }
