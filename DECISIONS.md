@@ -153,3 +153,17 @@ All direct dependencies are MIT, Apache-2.0, BSD or ISC (checked with `npm view 
 - **Adjacent qualifying pieces are merged** into one window even if the tithi or nakshatra
   changes inside it (both allowed); the window lists every tithi/nakshatra it spans.
 - **Range limit:** `from`..`to` inclusive, at most 366 days.
+
+## Database
+
+- **Migrations are generated SQL files** in `drizzle/` (`npm run db:generate` from
+  `src/server/db/schema.ts`) and applied with Drizzle's migrator (`npm run db:migrate`),
+  which records applied files in `drizzle.__drizzle_migrations`. Never edit the database
+  or an applied migration by hand.
+- **`npm test` never touches a database** (hermetic; storage is behind interfaces with an
+  in-memory implementation). Postgres integration tests live in `tests-db/` and run with
+  `npm run test:db` against `DATABASE_URL_TEST`.
+- **Scripts load `.env` with `process.loadEnvFile`**, so `engines.node` is `>=20.12`
+  instead of adding `dotenv`.
+- **Docker compose.** Postgres 16 (alpine image). Credentials in `docker-compose.yml` are
+  local-development only.

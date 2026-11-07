@@ -1,0 +1,22 @@
+# Local development stack.
+#   docker compose up          → Postgres 16 (and the app, once its service is defined below)
+# Credentials here are for LOCAL DEVELOPMENT ONLY.
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: panchang
+      POSTGRES_PASSWORD: panchang
+      POSTGRES_DB: panchang
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U panchang -d panchang"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+volumes:
+  pgdata:

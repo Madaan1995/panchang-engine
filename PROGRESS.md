@@ -44,7 +44,7 @@ when its acceptance criteria are covered by tests and
 ## 8. API
 - [x] 8.1 Bundled city list + lookup — ~110 cities (CA/US/GB/IN emphasis), zod-validated, accent-insensitive search (`feat: add bundled city list and search`)
 - [x] 8.2 Request validation (zod) and response builders with `conventions` block — zod query schemas, single report builder for API+page with conventions block (`feat: add request validation and report builders with conventions`)
-- [ ] 8.3 Postgres schema, SQL migrations, migrate/seed scripts, docker compose
+- [x] 8.3 Postgres schema, SQL migrations, migrate/seed scripts, docker compose — Drizzle schema → drizzle/0000_init.sql, migrator script, compose Postgres 16 (`feat: add Postgres schema, SQL migrations and docker compose database`)
 - [ ] 8.4 API keys: hashing, CLI to create keys, bearer auth
 - [ ] 8.5 Metering, monthly quota, `BillingProvider` mock
 - [ ] 8.6 Route handlers: panchang, festivals, muhurat, cities (400/404/429 behaviour)
